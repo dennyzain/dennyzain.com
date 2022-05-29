@@ -3,6 +3,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: { inter: 'Inter, sans-serif' },
+      backgroundImage: {
+        hero: "url('../public/hero.jpg')",
+      },
+      colors: {
+        primary: '#222222',
+        secondary: '#eaeaea',
+      },
     },
   },
   plugins: [],

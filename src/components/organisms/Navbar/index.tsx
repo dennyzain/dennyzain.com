@@ -3,7 +3,7 @@ import { Sun } from 'react-feather';
 
 const Navbar = () => (
   <header>
-    <nav className="flex justify-between items-center fixed top-0 left-0 font-inter w-full font-bold p-3">
+    <nav className="layout fixed flex flex-row justify-between items-center top-0 left-0 font-inter w-full font-bold p-3">
       <div className="grid grid-cols-4 gap-x-2 text-center text-sm">
         <p>Home</p>
         <p>Blogs</p>

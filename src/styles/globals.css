@@ -4,5 +4,9 @@
 @tailwind utilities;
 
 .layout {
-  @apply px-5 md:px-8 lg:px-10 xl:px-72;
+  @apply px-5 bg-secondary text-primary md:px-8 lg:px-10 xl:px-72;
+}
+
+.hero{
+  @apply bg-hero bg-cover;
 }
