@@ -10,7 +10,7 @@ const Navbar = () => (
         <p>Projects</p>
         <p>About</p>
       </div>
-      <button type="button" className="p-1 border-2 border-black rounded-lg">
+      <button type="button" className="p-1 border-2 border-black rounded-lg mr-2">
         <Sun color="black" size={15} />
       </button>
     </nav>
