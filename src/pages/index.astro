@@ -1,0 +1,143 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { Icon } from "astro-icon/components";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="tw-relative">
+    <Header title={SITE_TITLE} />
+    <main>
+      <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
+        <div class="tw-relative tw-h-9">
+          <div class="tw-absolute o2 -tw-bottom-20 tw-bg-white -tw-right-16">
+            <svg width="100%" height="100%" viewBox="0 0 1400 1400">
+              <def>
+                <path
+                  id="circle-3"
+                  d="M487,700.5A213.5,213.5 0 1 1914,700.5A213.5,213.5 0 1 1487,700.5"></path>
+              </def>
+              <text
+                class="circles__text tw-text-black tw-text-[60px] tw-uppercase tw-origin-[400px_400px] tw-will-change-[transform_opacity]"
+              >
+                <textPath
+                  class="circles__text-path"
+                  xlink:href="#circle-3"
+                  aria-label=""
+                  textLength="1250"
+                >
+                  available for freelance
+                </textPath>
+              </text>
+            </svg>
+          </div>
+        </div>
+        <h1 class="o1 tw-text-[24px] tw-text-black tw-font-monumentBold tw-pb-5">
+          Hi there, I’m Denny Zain a multidisplinary developer
+        </h1>
+        <h2 class="o1 tw-text-[24px] tw-font-monument tw-self-end">
+          Let’s connect
+          <Icon name="arrow-link" size={30} class={"tw-inline-block"} />
+        </h2>
+        <p class="o1 tw-text-[15px] tw-text-center tw-mt-10 -tw-bottom-24 tw-relative">
+          scroll down <Icon name="scroll" size={30} class={"tw-inline-block tw-animate-bounce"} />
+        </p>
+      </section>
+      <section class="tw-h-screen">
+        <h1 class="tw-font-monumentBold tw-text-[32px]">About</h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa consectetur animi
+          voluptatem, cum delectus ipsam modi nisi vero necessitatibus itaque iure aut magni ea
+          perferendis! Veritatis repudiandae eligendi reprehenderit beatae.
+        </p>
+      </section>
+      <section class="tw-h-screen">
+        <h1 class="tw-font-monumentBold tw-text-[32px]">What i do</h1>
+        <p>
+          focus on all things digital and web related. With each of my services, my goal is to
+          deliver an experience that serves a great purpose.
+        </p>
+      </section>
+    </main>
+    <Footer />
+    <script>
+      import Lenis from "@studio-freight/lenis";
+      import gsap from "gsap";
+      import { ScrollTrigger } from "gsap/all";
+
+      gsap.registerPlugin(ScrollTrigger);
+      const lenis = new Lenis({
+        duration: 1, // speed
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+        // gestureDirection: "vertical", // vertical, horizontal, both
+        smooth: true,
+        mouseMultiplier: 0.5, // sensibility
+        smoothTouch: false, // Mobile
+        touchMultiplier: 2, // sensibility on mobile
+        infinite: false, // Infinite scrolling
+      });
+
+      lenis.on("scroll", ({ scroll, limit, velocity, direction, progress }: any) => {
+        console.log(direction);
+      });
+
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      gsap.set("text.circles__text", { transformOrigin: "50% 50%" });
+      gsap.to("text.circles__text", {
+        duration: 12,
+        ease: "none",
+        rotation: "+=360",
+        repeat: -1,
+      });
+      const tl = gsap.timeline({
+        onComplete: () => {},
+      });
+      tl.from(
+        ".o1",
+        {
+          duration: 2,
+          skewX: -30,
+          yPercent: 100,
+          xPercent: 50,
+          ease: "power4",
+          stagger: 0.1,
+          blur: 10,
+        },
+        "<0.25"
+      );
+      tl.fromTo(
+        ".o2",
+        {
+          skewX: 0,
+          opacity: 0,
+          yPercent: 100,
+          xPercent: 50,
+          blur: 10,
+        },
+        {
+          skewX: -25,
+          opacity: 1,
+          yPercent: 0,
+          xPercent: 0,
+          ease: "power4",
+          stagger: 0.1,
+          blur: 0,
+          duration: 2,
+        },
+        "<0.25"
+      );
+    </script>
+  </body>
+</html>

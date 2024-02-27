@@ -1,0 +1,131 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import { Icon } from "astro-icon/components";
+---
+
+<header>
+  <div id="nav" class="tw-mix-blend-difference tw-z-50">
+    <nav
+      class="tw-flex tw-justify-between tw-items-center tw-fixed tw-top-0 tw-left-0 tw-w-full tw-px-[17px]"
+    >
+      <h1 class="text-logo tw-font-monumentBold tw-text-[36px] tw-text-white tw-tracking-[-8.64px]">
+        DZ
+      </h1>
+      <div class="tw-bg-white tw-flex tw-justify-center tw-items-center tw-p-2 tw-rounded-full">
+        <span id="date" class="tw-text-black tw-text-xs tw-animate-fade-in">:)</span>
+      </div>
+    </nav>
+    <section id="sound" class="tw-fixed -tw-left-8 tw-bottom-16">
+      <div class="tw-text-[24px] -tw-rotate-90">
+        <span class="tw-text-white"> sound</span>
+        <span id="sound-off" class="tw-text-gray-400 tw-animate-fade-in">off</span>
+        <span id="sound-on" class="tw-text-white tw-animate-fade-in tw-hidden">on</span>
+      </div>
+    </section>
+    <section class="tw-fixed tw-right-5 tw-bottom-16">
+      <button id="btn-nav-open">
+        <Icon name="nav" size={50} />
+      </button>
+    </section>
+    <audio class="tw-hidden" src="/sound/Palace.mp3" loop></audio>
+  </div>
+  <nav
+    id="nav-menu"
+    class="tw-bg-black tw-text-white tw-hidden tw-fixed tw-w-full tw-h-screen tw-top-0 tw-left-0"
+  >
+    <div
+      class="tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-[44px] tw-font-monument tw-h-full"
+    >
+      <HeaderLink class="link-item" href="/">Home</HeaderLink>
+      <HeaderLink class="link-item" href="/about">About</HeaderLink>
+      <HeaderLink class="link-item" href="/projects">Projects</HeaderLink>
+      <HeaderLink class="link-item" href="/contact">Contact</HeaderLink>
+    </div>
+    <button id="btn-nav-close" class="tw-fixed tw-mb-1 tw-right-5 tw-bottom-16">
+      <Icon name="nav" size={50} class="tw-text-black" />
+    </button>
+  </nav>
+</header>
+<style>
+  .text-logo {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+  }
+</style>
+<script>
+  import gsap from "gsap";
+
+  const audio = document.querySelector("audio") as HTMLAudioElement;
+  const icon = document.querySelector("#sound") as HTMLButtonElement;
+  const statusOff = document.querySelector("#sound-off") as HTMLSpanElement;
+  const statusOn = document.querySelector("#sound-on") as HTMLSpanElement;
+  const btnNavOpen = document.querySelector("#btn-nav-open") as HTMLButtonElement;
+  const btnNavClose = document.querySelector("#btn-nav-close") as HTMLButtonElement;
+  const navMenu = document.querySelector("#nav-menu") as HTMLDivElement;
+
+  window.addEventListener("scroll", (e) => {});
+
+  btnNavOpen.addEventListener("click", (e) => {
+    e.preventDefault();
+    navMenu.classList.toggle("tw-hidden");
+    gsap.fromTo("#btn-nav-open", { opacity: 1 }, { opacity: 0, duration: 0.6 });
+    gsap.fromTo(
+      ".link-item",
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 0.9, stagger: 0.1 }
+    );
+    gsap.fromTo(
+      "#nav-menu",
+      {
+        x: "-500",
+      },
+      {
+        x: "0",
+        duration: 1,
+        ease: "power4.out",
+      }
+    );
+  });
+
+  btnNavClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    gsap.fromTo("#btn-nav-open", { opacity: 0 }, { opacity: 1, duration: 0.6 });
+    gsap.to(".link-item", { opacity: 0, x: -100, duration: 0.9, stagger: 0.1 });
+    gsap.fromTo(
+      "#nav-menu",
+      { x: "0" },
+      {
+        x: "-500",
+        duration: 0.8,
+        ease: "power4.in",
+        onComplete: () => {
+          navMenu.classList.toggle("tw-hidden");
+        },
+      }
+    );
+  });
+
+  icon.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      statusOff.classList.add("tw-hidden");
+      statusOn.classList.remove("tw-hidden");
+    } else {
+      audio.pause();
+      statusOff.classList.remove("tw-hidden");
+      statusOn.classList.add("tw-hidden");
+    }
+  });
+
+  setInterval(() => {
+    const date = new Date();
+    const dateLocaleTime = date.toLocaleTimeString("en-US", {
+      minute: "2-digit",
+      hour: "2-digit",
+      second: "2-digit",
+    });
+    const elDate = document.getElementById("date") as HTMLSpanElement;
+    elDate.innerHTML = dateLocaleTime;
+  }, 1000);
+</script>

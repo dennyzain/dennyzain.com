@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Monument-Extended-Regular";
+  src: url("/fonts/MonumentExtended-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Monument-Extended-Ultrabold";
+  src: url("/fonts/MonumentExtended-Ultrabold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    font-family: "Geist", system-ui, sans-serif;
+  }
+}
+
+html,body{
+  @apply tw-bg-white;
+}
+
+/* html {
+  scroll-behavior: smooth;
+} */
+
+body {
+  @apply tw-px-[17px];
+}
