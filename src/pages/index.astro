@@ -4,6 +4,12 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { Icon } from "astro-icon/components";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import CardBlog from "../components/CardBlog.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
 ---
 
 <!doctype html>
@@ -16,7 +22,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <main>
       <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
         <div class="tw-relative tw-h-9">
-          <div class="tw-absolute o2 -tw-bottom-20 tw-bg-white -tw-right-16">
+          <div class="tw-absolute o2 -tw-bottom-20 -tw-right-16">
             <svg width="100%" height="100%" viewBox="0 0 1400 1400">
               <def>
                 <path
@@ -38,61 +44,81 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             </svg>
           </div>
         </div>
-        <h1 class="o1 tw-text-[24px] tw-text-black tw-font-monumentBold tw-pb-5">
-          Hi there, I’m Denny Zain a multidisplinary developer
+        <h1 class="o1 tw-text-[24px] tw-text-black tw-font-monumentBold tw-tracking-wide tw-pb-5">
+          Hi there, I’m Denny Abbas Zain a multidisplinary developer
         </h1>
-        <h2 class="o1 tw-text-[24px] tw-font-monument tw-self-end">
-          Let’s connect
-          <Icon name="arrow-link" size={30} class={"tw-inline-block"} />
-        </h2>
+        <div class="tw-self-end">
+          <button id="scroll-down" class="o1 tw-text-[24px] tw-font-monument link">
+            Let’s connect
+          </button>
+          <Icon name="arrow-link" size={30} class={"tw-inline-block tw-animate-bounce"} />
+        </div>
         <p class="o1 tw-text-[15px] tw-text-center tw-mt-10 -tw-bottom-24 tw-relative">
-          scroll down <Icon name="scroll" size={30} class={"tw-inline-block tw-animate-bounce"} />
+          scroll down <Icon name="scroll" size={30} class={"tw-inline-block"} />
         </p>
       </section>
-      <section class="tw-h-screen">
+      <section id="about" class="tw-h-screen tw-flex tw-flex-col tw-bg-[#efefef]">
         <h1 class="tw-font-monumentBold tw-text-[32px]">About</h1>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa consectetur animi
           voluptatem, cum delectus ipsam modi nisi vero necessitatibus itaque iure aut magni ea
           perferendis! Veritatis repudiandae eligendi reprehenderit beatae.
         </p>
+        <img
+          data-speed="0.1"
+          src="/images/denny-tampan.jpeg"
+          alt="img-1"
+          class="tw-rounded-3xl tw-mx-auto tw-mt-9"
+          width="250"
+        />
       </section>
       <section class="tw-h-screen">
-        <h1 class="tw-font-monumentBold tw-text-[32px]">What i do</h1>
+        <h1 class="tw-font-monumentBold tw-text-[32px]">Work</h1>
+        <h3 class="tw-font-geist tw-font-black">Quadrant Synergy Internasional</h3>
+        <h3 class="tw-font-geist tw-font-semibold tw-flex tw-justify-between">
+          <span>Frontend Developer</span>
+          <span class="tw-mr-3">2022 - Present</span>
+        </h3>
         <p>
-          focus on all things digital and web related. With each of my services, my goal is to
-          deliver an experience that serves a great purpose.
+          These was where my journey began. There, I worked on many projects in website. I was
+          stoked, because the app was downloaded over 1M+ users. I started off as a frontend
+          engineer, then tried to create unified codebase for web and mobile app. I took the
+          opportunity to learn about the product development and launching real product in the
+          market.
         </p>
+      </section>
+      <section id="blog" class="tw-h-screen">
+        <h1 class="tw-font-monumentBold tw-text-[32px]">Latest blogs</h1>
+        <div class="tw-flex tw-flex-col tw-space-y-10">
+          {
+            posts.slice(0, 3).map((post) => (
+              <a class="tw-inline-block" href={`/blog/${post.slug}/`}>
+                <CardBlog {...post.data} />
+              </a>
+            ))
+          }
+        </div>
       </section>
     </main>
     <Footer />
     <script>
-      import Lenis from "@studio-freight/lenis";
       import gsap from "gsap";
-      import { ScrollTrigger } from "gsap/all";
+      import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
 
+      const toContactEl = document.querySelector("#scroll-down") as HTMLButtonElement;
+      const logoEl = document.querySelector("#logo") as HTMLButtonElement;
+
+      gsap.registerPlugin(ScrollToPlugin);
       gsap.registerPlugin(ScrollTrigger);
-      const lenis = new Lenis({
-        duration: 1, // speed
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-        // gestureDirection: "vertical", // vertical, horizontal, both
-        smooth: true,
-        mouseMultiplier: 0.5, // sensibility
-        smoothTouch: false, // Mobile
-        touchMultiplier: 2, // sensibility on mobile
-        infinite: false, // Infinite scrolling
+
+      toContactEl.addEventListener("click", (e) => {
+        gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
       });
 
-      lenis.on("scroll", ({ scroll, limit, velocity, direction, progress }: any) => {
-        console.log(direction);
+      logoEl.addEventListener("click", (e) => {
+        console.log("first");
+        gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
       });
-
-      function raf(time: number) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-
-      requestAnimationFrame(raf);
 
       gsap.set("text.circles__text", { transformOrigin: "50% 50%" });
       gsap.to("text.circles__text", {
@@ -104,6 +130,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       const tl = gsap.timeline({
         onComplete: () => {},
       });
+
       tl.from(
         ".o1",
         {
@@ -114,9 +141,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           ease: "power4",
           stagger: 0.1,
           blur: 10,
+          onComplete: () => {
+            const o1 = document.querySelectorAll(".o1") as NodeListOf<HTMLSpanElement>;
+            o1.forEach((el) => el.removeAttribute("style"));
+          },
         },
         "<0.25"
       );
+
       tl.fromTo(
         ".o2",
         {

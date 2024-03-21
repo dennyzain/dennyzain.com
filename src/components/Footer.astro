@@ -2,23 +2,38 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<footer>
-  <section class="tw-mb-40">
+<footer id="contacts">
+  <section class="tw-my-28">
     <span>got project? want collaborate?</span>
-    <h2 class="tw-text-[40px] tw-font-monumentBold">Let’s do make some cool stuff together.</h2>
+    <h2 class="tw-text-[40px] tw-font-monumentBold tw-tracking-wide tw-leading-9">
+      Let’s do make some cool stuff together.
+    </h2>
     <span>looking forward to create together</span>
     <div class="tw-grid tw-mt-[63px] tw-grid-cols-[auto_1fr]">
-      <ul class="tw-flex tw-flex-col tw-text-[15px] tw-font-monument">
-        <li>github <Icon name="arrow-link" size={30} class={"tw-inline-block"} /></li>
-        <li>linkedin <Icon name="arrow-link" size={30} class={"tw-inline-block"} /></li>
-        <li>medium <Icon name="arrow-link" size={30} class={"tw-inline-block"} /></li>
-        <li>twitter <Icon name="arrow-link" size={30} class={"tw-inline-block"} /></li>
+      <ul class="tw-flex tw-flex-col tw-text-[15px] tw-space-y-2 tw-font-monument">
+        <div class="tw-flex tw-items-center">
+          <li class="link">github</li>
+          <Icon name="arrow-link" size={20} />
+        </div>
+        <div class="tw-flex tw-items-center">
+          <li class="link">linkedin</li>
+          <Icon name="arrow-link" size={20} />
+        </div>
+        <div class="tw-flex tw-items-center">
+          <li class="link">medium</li>
+          <Icon name="arrow-link" size={20} />
+        </div>
+        <div class="tw-flex tw-items-center">
+          <li class="link">twitter</li>
+          <Icon name="arrow-link" size={20} />
+        </div>
       </ul>
       <div class="tw-font-monumentBold tw-self-center tw-place-self-center tw-text-center">
         <h2 class="tw-text-[24px]">Get in touch</h2>
-        <span class="tw-text-[15px]"
-          >email me <Icon name="arrow-link" size={30} class={"tw-inline-block "} /></span
-        >
+        <div class="tw-flex tw-items-center tw-justify-center">
+          <span class="tw-text-[15px] tw-font-monument link">email me </span>
+          <Icon name="envelope" class="tw-animate-pulse tw-ml-1" size={20} />
+        </div>
       </div>
     </div>
   </section>

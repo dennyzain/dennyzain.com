@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[1fr_auto_1fr]">
+  <div class="tw-text-sm">
+    <span>16 min read</span> • <FormattedDate date={pubDate} />
+  </div>
+  <h3 class="tw-col-start-1 tw-row-start-2 tw-font-bold">{title}</h3>
+  <img
+    class="tw-col-start-2 tw-row-start-2"
+    width="400"
+    height="150"
+    src={heroImage}
+    alt="thumbnail"
+  />
+  <div class="tw-col-start-1 tw-row-start-3">
+    <span class="tw-bg-black tw-text-white tw-text-xs tw-rounded-2xl tw-box-border tw-p-[5px]"
+      >Learning</span
+    >
+  </div>
+  <hr class="tw-col-start-1 tw-my-2 tw-row-start-4 tw-col-span-2" />
+</div>
