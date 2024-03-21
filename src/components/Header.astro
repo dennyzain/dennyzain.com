@@ -1,6 +1,5 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -46,7 +45,7 @@ import { Icon } from "astro-icon/components";
       <!-- <HeaderLink class="link-item" href="#work">Work</HeaderLink> -->
       <HeaderLink class="link-item" href="/blog">Blog</HeaderLink>
       <!-- <HeaderLink class="link-item" href="#projects">Projects</HeaderLink> -->
-      <HeaderLink class="link-item" href="#contacts">Contact</HeaderLink>
+      <HeaderLink id="to-contact" class="link-item" href="#">Contact</HeaderLink>
     </div>
     <button id="btn-nav-close" class="tw-fixed tw-z-10 tw-mb-1 tw-right-5 tw-bottom-16">
       <Icon name="nav" size={50} class="tw-text-black" />
@@ -60,7 +59,9 @@ import { Icon } from "astro-icon/components";
   }
 </style>
 <script>
+  import Lenis from "@studio-freight/lenis";
   import gsap from "gsap";
+  import { ScrollToPlugin } from "gsap/all";
 
   const audio = document.querySelector("audio") as HTMLAudioElement;
   const icon = document.querySelector("#sound") as HTMLButtonElement;
@@ -70,18 +71,35 @@ import { Icon } from "astro-icon/components";
   const btnNavClose = document.querySelector("#btn-nav-close") as HTMLButtonElement;
   const navMenu = document.querySelector("#nav-menu") as HTMLDivElement;
   const allLinksNav = document.querySelectorAll(".link-item");
+  const logoEl = document.querySelector("#logo") as HTMLButtonElement;
+  const btnContactNav = document.querySelector("#to-contact") as HTMLLinkElement;
 
-  import Lenis from "@studio-freight/lenis";
+  gsap.registerPlugin(ScrollToPlugin);
 
-  const lenis = new Lenis({
-    duration: 1, // speed
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://
-    gestureOrientation: "vertical",
-    touchMultiplier: 2,
-    infinite: false, // Infinite scrolling
+  btnContactNav.addEventListener("click", () => {
+    console.log("first");
+    gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
   });
 
-  lenis.on("scroll", ({ scroll, limit, velocity, direction, progress }: any) => {
+  logoEl.addEventListener("click", () => {
+    gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
+  });
+
+  const lenis = new Lenis({
+    duration: 1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    gestureOrientation: "vertical",
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  /*
+  @params {
+    scroll, limit, velocity, direction, progress
+  }
+  */
+
+  lenis.on("scroll", ({ progress }: any) => {
     const elDate = document.getElementById("date") as HTMLSpanElement;
     elDate.innerHTML = `${Math.round(progress * 100)}%`;
   });
@@ -131,29 +149,29 @@ import { Icon } from "astro-icon/components";
     );
   }
 
-  function setDate() {
-    const date = new Date();
-    const dateLocaleTime = date.toLocaleTimeString("en-US", {
-      minute: "2-digit",
-      hour: "2-digit",
-      second: "2-digit",
-    });
-    const elDate = document.getElementById("date") as HTMLSpanElement;
-    elDate.innerHTML = dateLocaleTime;
-  }
+  // function setDate() {
+  //   const date = new Date();
+  //   const dateLocaleTime = date.toLocaleTimeString("en-US", {
+  //     minute: "2-digit",
+  //     hour: "2-digit",
+  //     second: "2-digit",
+  //   });
+  //   const elDate = document.getElementById("date") as HTMLSpanElement;
+  //   elDate.innerHTML = dateLocaleTime;
+  // }
 
-  btnNavOpen.addEventListener("click", (e) => {
+  btnNavOpen.addEventListener("click", (e: Event) => {
     e.preventDefault();
     navMenuOpen();
   });
 
-  btnNavClose.addEventListener("click", (e) => {
+  btnNavClose.addEventListener("click", (e: Event) => {
     e.preventDefault();
     navMenuClose();
   });
 
   allLinksNav.forEach((link) => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener("click", () => {
       navMenuClose();
     });
   });
@@ -169,6 +187,4 @@ import { Icon } from "astro-icon/components";
       statusOn.classList.add("tw-hidden");
     }
   });
-
-  // setInterval(setDate, 1000);
 </script>

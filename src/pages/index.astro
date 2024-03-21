@@ -105,19 +105,13 @@ const posts = (await getCollection("blog")).sort(
       import gsap from "gsap";
       import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
 
-      const toContactEl = document.querySelector("#scroll-down") as HTMLButtonElement;
-      const logoEl = document.querySelector("#logo") as HTMLButtonElement;
-
       gsap.registerPlugin(ScrollToPlugin);
       gsap.registerPlugin(ScrollTrigger);
 
-      toContactEl.addEventListener("click", (e) => {
-        gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
-      });
+      const toContactEl = document.querySelector("#scroll-down") as HTMLButtonElement;
 
-      logoEl.addEventListener("click", (e) => {
-        console.log("first");
-        gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
+      toContactEl.addEventListener("click", () => {
+        gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
       });
 
       gsap.set("text.circles__text", { transformOrigin: "50% 50%" });

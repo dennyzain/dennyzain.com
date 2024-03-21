@@ -4,7 +4,7 @@ import FormattedDate from "./FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, pubDate, heroImage } = Astro.props;
 ---
 
 <div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[1fr_auto_1fr]">
