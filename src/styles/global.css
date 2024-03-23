@@ -94,7 +94,7 @@ body {
 }
 
 body {
-  @apply tw-mx-6;
+  @apply !tw-mx-auto !tw-max-w-[400px];
 }
 
 .link {

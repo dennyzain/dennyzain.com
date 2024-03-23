@@ -3,11 +3,11 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import SplitText from "../components/SplitText.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, heroImage } = Astro.props;
-console.log(Astro.props);
 ---
 
 <html lang="en">
@@ -19,7 +19,9 @@ console.log(Astro.props);
     <Header />
     <main class="tw-mt-14">
       <article>
-        <h1 class="tw-font-monument tw-text-2xl">{title}</h1>
+        <h1 class="tw-font-monument tw-text-2xl">
+          <SplitText title={title} />
+        </h1>
         <FormattedDate date={pubDate} />
         <div>
           {

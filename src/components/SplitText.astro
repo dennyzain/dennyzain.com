@@ -1,0 +1,44 @@
+---
+type Props = {
+  title: string;
+  containerClass?: string;
+  letterClass?: string;
+};
+
+const { title, containerClass: className, letterClass } = Astro.props;
+const arrTitle = title.split(" ");
+---
+
+<style>
+  .wrapper {
+    clip-path: inset(0 0 0 0);
+  }
+</style>
+<div class:list={[className, "tw-flex tw-flex tw-flex-wrap tw-justify-start"]}>
+  {
+    arrTitle.map((word: string) => {
+      return (
+        <div class="wrapper">
+          <span class:list={[letterClass, "letter tw-inline-block tw-mr-2"]}>{word}</span>
+        </div>
+      );
+    })
+  }
+</div>
+<script>
+  import gsap from "gsap";
+
+  gsap.fromTo(
+    ".letter",
+    { y: 120 },
+    {
+      y: 0,
+      stagger: 0.2,
+      duration: 0.8,
+      onComplete: () => {
+        document.querySelectorAll(".letter").forEach((el) => el.removeAttribute("style"));
+        document.querySelectorAll(".wrapper").forEach((el) => el.classList.remove("wrapper"));
+      },
+    }
+  );
+</script>

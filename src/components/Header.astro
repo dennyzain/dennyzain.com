@@ -76,15 +76,6 @@ import { Icon } from "astro-icon/components";
 
   gsap.registerPlugin(ScrollToPlugin);
 
-  btnContactNav.addEventListener("click", () => {
-    console.log("first");
-    gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
-  });
-
-  logoEl.addEventListener("click", () => {
-    gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
-  });
-
   const lenis = new Lenis({
     duration: 1,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -134,7 +125,13 @@ import { Icon } from "astro-icon/components";
 
   function navMenuClose() {
     gsap.fromTo("#btn-nav-open", { opacity: 0 }, { opacity: 1, duration: 0.6 });
-    gsap.to(".link-item", { opacity: 0, x: -100, duration: 0.9, stagger: 0.1 });
+    gsap.to(".link-item", {
+      opacity: 0,
+      x: -100,
+      duration: 0.9,
+      stagger: 0.1,
+      immediateRender: true,
+    });
     gsap.fromTo(
       "#nav-menu",
       { x: "0" },
@@ -159,6 +156,14 @@ import { Icon } from "astro-icon/components";
   //   const elDate = document.getElementById("date") as HTMLSpanElement;
   //   elDate.innerHTML = dateLocaleTime;
   // }
+
+  btnContactNav.addEventListener("click", () => {
+    gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
+  });
+
+  logoEl.addEventListener("click", () => {
+    gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
+  });
 
   btnNavOpen.addEventListener("click", (e: Event) => {
     e.preventDefault();

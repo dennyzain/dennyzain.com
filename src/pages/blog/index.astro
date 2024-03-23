@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import CardBlog from "../../components/CardBlog.astro";
+import SplitText from "../../components/SplitText.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -19,7 +20,9 @@ const posts = (await getCollection("blog")).sort(
   <body>
     <Header />
     <main class="tw-mt-14">
-      <h1 class="tw-font-monumentBold tw-text-[32px]">Blog</h1>
+      <h1 class="tw-font-monumentBold tw-text-[32px]">
+        <SplitText title="Blog" letterClass="tw-py-2" />
+      </h1>
       <section>
         <ul>
           {

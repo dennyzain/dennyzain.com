@@ -6,6 +6,7 @@ import { Icon } from "astro-icon/components";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import CardBlog from "../components/CardBlog.astro";
+import SplitText from "../components/SplitText.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -44,8 +45,8 @@ const posts = (await getCollection("blog")).sort(
             </svg>
           </div>
         </div>
-        <h1 class="o1 tw-text-[24px] tw-text-black tw-font-monumentBold tw-tracking-wide tw-pb-5">
-          Hi there, I’m Denny Abbas Zain a multidisplinary developer
+        <h1 class="tw-text-[24px] tw-text-black tw-font-monumentBold tw-tracking-wide tw-pb-5">
+          <SplitText title="Hi there, I’m Denny Abbas Zain a multidisciplinary developer" />
         </h1>
         <div class="tw-self-end">
           <button id="scroll-down" class="o1 tw-text-[24px] tw-font-monument link">

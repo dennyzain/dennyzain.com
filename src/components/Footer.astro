@@ -1,19 +1,21 @@
 ---
 import { Icon } from "astro-icon/components";
 import { SOCIAL_LINKS } from "./../consts";
+import SplitText from "./SplitText.astro";
+const links = SOCIAL_LINKS;
 ---
 
 <footer id="contacts">
   <section class="tw-my-28">
     <span>got project? want collaborate?</span>
     <h2 class="tw-text-[40px] tw-font-monumentBold tw-tracking-wide tw-leading-9">
-      Let’s do make some cool stuff together.
+      <SplitText title="Let’s do make some cool stuff together." letterClass="tw-py-1" />
     </h2>
     <span>looking forward to create together</span>
     <section class="tw-grid tw-mt-[63px] tw-grid-cols-[auto_1fr]">
       <ul class="tw-col-start-1 tw-flex tw-flex-col tw-text-[15px] tw-space-y-2 tw-font-monument">
         {
-          SOCIAL_LINKS.map((link) => (
+          links.map((link) => (
             <a
               href={link.url}
               target="_blank"
