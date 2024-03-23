@@ -7,6 +7,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://dennyabbaszain.github.io',
+  site: 'https://dennyabbaszain.me',
   integrations: [mdx(), sitemap(), tailwind(),icon({iconDir: 'public/icons'})],
 });
