@@ -3,6 +3,12 @@ import HeaderLink from "./HeaderLink.astro";
 import { Icon } from "astro-icon/components";
 ---
 
+<style>
+  .text-logo {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+  }
+</style>
 <header class="z-50">
   <div id="nav" class="tw-mix-blend-difference">
     <nav
@@ -52,12 +58,6 @@ import { Icon } from "astro-icon/components";
     </button>
   </nav>
 </header>
-<style>
-  .text-logo {
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-  }
-</style>
 <script>
   import Lenis from "@studio-freight/lenis";
   import gsap from "gsap";
