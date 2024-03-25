@@ -7,7 +7,7 @@ import SplitText from "../components/SplitText.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, heroImage } = Astro.props;
+const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
 ---
 
 <html lang="en">
@@ -22,7 +22,11 @@ const { title, description, pubDate, heroImage } = Astro.props;
         <h1 class="tw-font-monument tw-text-2xl">
           <SplitText title={title} />
         </h1>
-        <FormattedDate date={pubDate} />
+        <div class="tw-flex tw-items-center tw-space-x-2">
+          <FormattedDate date={pubDate} />
+          <span class="tw-font-bold">•</span>
+          <span>{minRead} min read</span>
+        </div>
         <div>
           {
             heroImage && (
@@ -32,6 +36,16 @@ const { title, description, pubDate, heroImage } = Astro.props;
         </div>
         <hr class="tw-my-5" />
         <slot />
+        <div class="tw-space-x-1">
+          {
+            tags &&
+              tags.map((tag) => (
+                <span class="tw-inline-block tw-mt-5 tw-bg-black tw-text-white tw-text-xs tw-text-center tw-rounded-xl tw-box-border tw-p-[5px] tw-min-w-10">
+                  {tag}
+                </span>
+              ))
+          }
+        </div>
       </article>
     </main>
     <Footer />

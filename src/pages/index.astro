@@ -9,7 +9,7 @@ import CardBlog from "../components/CardBlog.astro";
 import SplitText from "../components/SplitText.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
@@ -99,6 +99,10 @@ const posts = (await getCollection("blog")).sort(
             ))
           }
         </div>
+        <a href="/blog" class="tw-flex tw-items-center">
+          <span class="link">see more blogs </span>
+          <Icon name="arrow-link" class="tw-ml-1" size={20} />
+        </a>
       </section>
     </main>
     <Footer />

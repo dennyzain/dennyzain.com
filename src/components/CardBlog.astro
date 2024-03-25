@@ -4,7 +4,7 @@ import FormattedDate from "./FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, pubDate, heroImage } = Astro.props;
+const { title, pubDate, heroImage, tags } = Astro.props;
 ---
 
 <div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[1fr_auto_1fr]">
@@ -19,10 +19,14 @@ const { title, pubDate, heroImage } = Astro.props;
     src={heroImage}
     alt="thumbnail"
   />
-  <div class="tw-col-start-1 tw-row-start-3">
-    <span class="tw-bg-black tw-text-white tw-text-xs tw-rounded-2xl tw-box-border tw-p-[5px]"
-      >Learning</span
-    >
+  <div class="tw-col-start-1 tw-row-start-3 tw-space-x-1">
+    {
+      tags.map((tag) => (
+        <span class="tw-inline-block tw-bg-black tw-text-white tw-text-xs tw-text-center tw-rounded-xl tw-box-border tw-p-[5px] tw-min-w-10">
+          {tag}
+        </span>
+      ))
+    }
   </div>
   <hr class="tw-col-start-1 tw-my-2 tw-row-start-4 tw-col-span-2" />
 </div>
