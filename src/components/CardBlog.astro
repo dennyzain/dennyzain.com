@@ -4,12 +4,12 @@ import FormattedDate from "./FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, pubDate, heroImage, tags } = Astro.props;
+const { title, pubDate, heroImage, tags, minRead } = Astro.props;
 ---
 
 <div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[1fr_auto_1fr]">
   <div class="tw-text-sm">
-    <span>16 min read</span> • <FormattedDate date={pubDate} />
+    <span>{minRead} min read</span> • <FormattedDate date={pubDate} />
   </div>
   <h3 class="tw-col-start-1 tw-row-start-2 tw-font-bold">{title}</h3>
   <img
