@@ -5,7 +5,7 @@ type Props = {
   letterClass?: string;
 };
 
-const { title, containerClass: className, letterClass } = Astro.props;
+const { title, containerClass, letterClass } = Astro.props;
 const arrTitle = title.split(" ");
 ---
 
@@ -14,7 +14,7 @@ const arrTitle = title.split(" ");
     clip-path: inset(0 0 0 0);
   }
 </style>
-<div class:list={[className, "tw-flex tw-flex tw-flex-wrap tw-justify-start"]}>
+<div class:list={[containerClass, "tw-flex tw-flex tw-flex-wrap tw-justify-start"]}>
   {
     arrTitle.map((word: string) => {
       return (

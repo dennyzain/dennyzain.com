@@ -17,10 +17,10 @@ const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
 
   <body>
     <Header />
-    <main class="tw-mt-14">
+    <main class="tw-mt-14 lg:tw-mt-20">
       <article>
         <h1 class="tw-font-monument tw-text-2xl">
-          <SplitText title={title} />
+          <SplitText title={title} letterClass="lg:tw-text-[45px] lg:tw-py-3" />
         </h1>
         <div class="tw-flex tw-items-center tw-space-x-2">
           <FormattedDate date={pubDate} />
@@ -35,7 +35,9 @@ const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
           }
         </div>
         <hr class="tw-my-5" />
-        <slot />
+        <section class="lg:tw-text-[19px]">
+          <slot />
+        </section>
         <div class="tw-space-x-1">
           {
             tags &&

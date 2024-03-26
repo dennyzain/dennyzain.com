@@ -7,13 +7,18 @@ const links = SOCIAL_LINKS;
 
 <footer id="contacts">
   <section class="tw-my-28">
-    <span>got project? want collaborate?</span>
-    <h2 class="tw-text-[40px] tw-font-monumentBold tw-tracking-wide tw-leading-9">
-      <SplitText title="Let’s do make some cool stuff together." letterClass="tw-py-1" />
-    </h2>
-    <span>looking forward to create together</span>
+    <span class="tw-text-[14px] lg:tw-text-[18px]">got project? want collaborate?</span>
+    <div class="tw-font-monumentBold">
+      <SplitText
+        title="Let’s do make some cool stuff together."
+        letterClass="tw-text-[32px] lg:tw-text-[45px] lg:tw-py-1"
+      />
+    </div>
+    <span class="tw-text-[14px] lg:tw-text-[18px]">looking forward to create together</span>
     <section class="tw-grid tw-mt-[63px] tw-grid-cols-[auto_1fr]">
-      <div class="tw-col-start-1 tw-flex tw-flex-col tw-text-[15px] tw-space-y-2 tw-font-monument">
+      <div
+        class="tw-col-start-1 tw-flex tw-flex-col tw-text-[15px] tw-space-y-2 tw-font-monument lg:tw-text-[19px]"
+      >
         {
           links.map((link) => (
             <a
@@ -31,7 +36,7 @@ const links = SOCIAL_LINKS;
       <div
         class="tw-col-start-2 tw-font-monumentBold tw-self-center tw-place-self-center tw-text-center"
       >
-        <h2 class="tw-text-[24px]">Get in touch</h2>
+        <h2 class="tw-text-[24px] lg:tw-text-[30px]">Get in touch</h2>
         <div class="tw-flex tw-items-center tw-justify-center">
           <a
             href={"mailto:abbasdenny24@gmail.com"}
@@ -39,7 +44,7 @@ const links = SOCIAL_LINKS;
             rel="noopener noreferrer"
             class="tw-flex tw-items-center"
           >
-            <span class="tw-text-[15px] tw-font-monument link">email me </span>
+            <span class="tw-text-[15px] tw-font-monument link lg:tw-text-[19px]">email me </span>
             <Icon name="envelope" class="tw-animate-pulse tw-ml-1" size={20} />
           </a>
         </div>
