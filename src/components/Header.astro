@@ -36,12 +36,19 @@ import { Icon } from "astro-icon/components";
         <span id="sound-on" class="tw-text-white tw-animate-fade-in tw-hidden">on</span>
       </div>
     </section>
-    <section class="tw-fixed tw-right-5 tw-bottom-16 lg:tw-right-[23%]">
+    <section class="tw-fixed tw-right-5 tw-bottom-16 lg:tw-right-[23%] lg:tw-flex lg:tw-flex-col">
       <button id="btn-nav-open" class="lg:tw-hidden">
         <Icon name="nav" size={50} />
       </button>
+      <a href="/">
+        <span
+          class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-inline-block"
+          >Bio</span
+        >
+      </a>
       <a href="/blog">
-        <span class="tw-font-monument tw-hidden lg:tw-inline-block tw-text-white tw-text-xl"
+        <span
+          class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-inline-block"
           >Blog</span
         >
       </a>
