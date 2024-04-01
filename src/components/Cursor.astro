@@ -1,0 +1,32 @@
+<div
+  class="cursor tw-fixed tw-top-0 tw-left-0 tw-pointer-events-none tw-mix-blend-difference tw-z-50"
+>
+  <svg width="100" height="100">
+    <circle cx="50" cy="50" r="25" stroke="black" stroke-width="1" fill="white"></circle>
+  </svg>
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  gsap.set(".cursor", { xPercent: -50, yPercent: -50 });
+
+  let xTo = gsap.quickTo(".cursor", "x", { duration: 1.4, ease: "power4" }),
+    yTo = gsap.quickTo(".cursor", "y", { duration: 1.4, ease: "power4" });
+
+  function cursorMove(e: MouseEvent) {
+    xTo(e.clientX);
+    yTo(e.clientY);
+  }
+
+  function cursorMouseOver(e: any) {
+    if (e.target.id === "hover-special") {
+      gsap.to(".cursor", { scale: 6, duration: 2, ease: "power3" });
+    } else {
+      gsap.to(".cursor", { scale: 1, duration: 2, ease: "power3" });
+    }
+  }
+
+  window.addEventListener("mousemove", cursorMove);
+  window.addEventListener("mouseover", cursorMouseOver);
+</script>
