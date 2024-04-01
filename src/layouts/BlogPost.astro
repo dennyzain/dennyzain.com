@@ -7,7 +7,6 @@ import SplitText from "../components/SplitText.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Giscus from "../lib/Giscus.astro";
 import Cursor from "../components/Cursor.astro";
-import { ViewTransitions } from "astro:transitions";
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
@@ -16,7 +15,6 @@ const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
-    <ViewTransitions />
   </head>
 
   <body>
@@ -24,7 +22,7 @@ const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
     <main class="tw-mt-14 lg:tw-mt-20">
       <article>
         <h1 class="tw-font-monument tw-text-2xl">
-          <SplitText title={title} letterClass="lg:tw-text-[45px] lg:tw-py-3" />
+          <SplitText title={title} letterClass="lg:tw-text-[45px] lg:tw-py-3 lg:tw-ml-3" />
         </h1>
         <div class="tw-flex tw-items-center tw-space-x-2">
           <FormattedDate date={pubDate} />

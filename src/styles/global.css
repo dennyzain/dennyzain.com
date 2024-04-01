@@ -33,6 +33,10 @@ body {
   @apply tw-mx-auto xs:tw-max-w-[80%] md:tw-max-w-[75%] lg:tw-max-w-[50%];
 }
 
+pre {
+  @apply tw-p-[2ch] tw-rounded-xl;
+}
+
 .link {
   background: linear-gradient(to right, black, black);
   background-size: 0 0.2em;
