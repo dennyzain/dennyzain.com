@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import SplitText from "../components/SplitText.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Giscus from "../lib/Giscus.astro";
+import Cursor from "../components/Cursor.astro";
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
@@ -51,6 +52,7 @@ const { title, description, pubDate, heroImage, tags, minRead } = Astro.props;
         </div>
       </article>
       <Giscus />
+      <Cursor />
     </main>
     <Footer />
   </body>

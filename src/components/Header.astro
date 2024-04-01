@@ -9,19 +9,21 @@ import { Icon } from "astro-icon/components";
     -webkit-text-stroke-color: black;
   }
 </style>
-<header class="z-50">
-  <div id="nav" class="tw-mix-blend-difference">
-    <nav class="tw-flex tw-items-center tw-fixed tw-top-0 tw-left-0 tw-w-full tw-px-[17px]">
+<header>
+  <div id="nav">
+    <nav
+      class="tw-flex tw-items-center tw-fixed tw-mix-blend-difference tw-top-0 tw-left-0 tw-w-full tw-px-[17px] tw-z-10"
+    >
       <div class="tw-flex tw-justify-between tw-w-full lg:tw-w-[55%] lg:tw-mx-auto">
         <span
           id="logo"
-          class="text-logo tw-font-monumentBold tw-text-[36px] tw-text-white tw-self-center tw-tracking-[-8.64px] lg:tw-text-[40px]"
+          class="text-logo tw-cursor-pointer tw-font-monumentBold tw-text-[36px] tw-text-white tw-self-center tw-tracking-[-8.64px] lg:tw-text-[40px]"
         >
           DZ
         </span>
         <div
           class="tw-bg-white tw-flex tw-justify-center tw-items-center tw-p-2 tw-w-[40px] tw-min-h-[32px] tw-self-center tw-rounded-full
-          lg:tw-min-w-[44px] lg:tw-min-h-[44px] tw-font-monument"
+        lg:tw-min-w-[44px] lg:tw-min-h-[44px] tw-font-monument"
         >
           <span id="date" class="tw-text-black tw-text-[16px] tw-animate-fade-in lg:tw-text-[18px]"
             >:)</span
@@ -29,14 +31,19 @@ import { Icon } from "astro-icon/components";
         </div>
       </div>
     </nav>
-    <section id="sound" class="tw-fixed -tw-left-6 tw-bottom-16 lg:tw-left-[21%]">
+    <section
+      id="sound"
+      class="tw-fixed -tw-left-6 tw-bottom-16 lg:tw-left-[21%] tw-mix-blend-difference"
+    >
       <div class="tw-text-[18px] -tw-rotate-90">
         <span class="tw-text-white"> sound</span>
         <span id="sound-off" class="tw-text-gray-400 tw-animate-fade-in">off</span>
         <span id="sound-on" class="tw-text-white tw-animate-fade-in tw-hidden">on</span>
       </div>
     </section>
-    <section class="tw-fixed tw-right-5 tw-bottom-16 lg:tw-right-[23%] lg:tw-flex lg:tw-flex-col">
+    <section
+      class="tw-fixed tw-right-5 tw-bottom-16 lg:tw-right-[23%] lg:tw-flex lg:tw-flex-col tw-mix-blend-difference"
+    >
       <button id="btn-nav-open" class="lg:tw-hidden">
         <Icon name="nav" size={50} />
       </button>
@@ -52,163 +59,162 @@ import { Icon } from "astro-icon/components";
           >Blog</span
         >
       </a>
-      <a href="#" id="to-contact">
-        <span
-          class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-inline-block"
-          >Contact</span
+      <span
+        id="to-contact"
+        class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-block"
+        >Contact</span
+      >
+      <audio class="tw-hidden" src="/sound/Palace.mp3" loop></audio>
+      <nav
+        id="nav-menu"
+        class="tw-bg-black tw-text-white tw-hidden tw-z-[999] tw-fixed tw-w-full tw-h-screen tw-top-0 tw-left-0"
+      >
+        <div
+          class="tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-[44px] tw-font-monument tw-h-full"
         >
-      </a>
+          <HeaderLink class="link-item" href="/">Bio</HeaderLink>
+          <HeaderLink class="link-item" href="/blog">Blog</HeaderLink>
+          <HeaderLink id="to-contact" class="link-item" href="#">Contact</HeaderLink>
+        </div>
+        <button id="btn-nav-close" class="tw-fixed tw-z-10 tw-mb-1 tw-right-5 tw-bottom-16">
+          <Icon name="nav" size={50} class="tw-text-black" />
+        </button>
+      </nav>
     </section>
-    <audio class="tw-hidden" src="/sound/Palace.mp3" loop></audio>
-  </div>
-  <nav
-    id="nav-menu"
-    class="tw-bg-black tw-text-white tw-hidden tw-z-[999] tw-fixed tw-w-full tw-h-screen tw-top-0 tw-left-0"
-  >
-    <div
-      class="tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-[44px] tw-font-monument tw-h-full"
-    >
-      <HeaderLink class="link-item" href="/">Bio</HeaderLink>
-      <HeaderLink class="link-item" href="/blog">Blog</HeaderLink>
-      <HeaderLink id="to-contact" class="link-item" href="#">Contact</HeaderLink>
-    </div>
-    <button id="btn-nav-close" class="tw-fixed tw-z-10 tw-mb-1 tw-right-5 tw-bottom-16">
-      <Icon name="nav" size={50} class="tw-text-black" />
-    </button>
-  </nav>
-</header>
-<script>
-  import Lenis from "@studio-freight/lenis";
-  import gsap from "gsap";
-  import { ScrollToPlugin } from "gsap/all";
+    <script>
+      import Lenis from "@studio-freight/lenis";
+      import gsap from "gsap";
+      import { ScrollToPlugin } from "gsap/all";
 
-  const audio = document.querySelector("audio") as HTMLAudioElement;
-  const icon = document.querySelector("#sound") as HTMLButtonElement;
-  const statusOff = document.querySelector("#sound-off") as HTMLSpanElement;
-  const statusOn = document.querySelector("#sound-on") as HTMLSpanElement;
-  const btnNavOpen = document.querySelector("#btn-nav-open") as HTMLButtonElement;
-  const btnNavClose = document.querySelector("#btn-nav-close") as HTMLButtonElement;
-  const navMenu = document.querySelector("#nav-menu") as HTMLDivElement;
-  const allLinksNav = document.querySelectorAll(".link-item");
-  const logoEl = document.querySelector("#logo") as HTMLButtonElement;
-  const btnContactNav = document.querySelector("#to-contact") as HTMLLinkElement;
+      gsap.registerPlugin(ScrollToPlugin);
 
-  gsap.registerPlugin(ScrollToPlugin);
+      const audio = document.querySelector("audio") as HTMLAudioElement;
+      const icon = document.querySelector("#sound") as HTMLButtonElement;
+      const statusOff = document.querySelector("#sound-off") as HTMLSpanElement;
+      const statusOn = document.querySelector("#sound-on") as HTMLSpanElement;
+      const btnNavOpen = document.querySelector("#btn-nav-open") as HTMLButtonElement;
+      const btnNavClose = document.querySelector("#btn-nav-close") as HTMLButtonElement;
+      const navMenu = document.querySelector("#nav-menu") as HTMLDivElement;
+      const allLinksNav = document.querySelectorAll(".link-item");
+      const logoEl = document.querySelector("#logo") as HTMLButtonElement;
+      const btnContactNav = document.querySelector("#to-contact") as HTMLLinkElement;
 
-  const lenis = new Lenis({
-    duration: 1,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    gestureOrientation: "vertical",
-    touchMultiplier: 2,
-    infinite: false,
-  });
+      const lenis = new Lenis({
+        duration: 1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        gestureOrientation: "vertical",
+        touchMultiplier: 2,
+        infinite: false,
+      });
 
-  /*
+      /*
   @params {
     scroll, limit, velocity, direction, progress
   }
   */
 
-  lenis.on("scroll", ({ progress }: any) => {
-    const elDate = document.getElementById("date") as HTMLSpanElement;
-    elDate.innerHTML = `${Math.round(progress * 100)}`;
-  });
+      lenis.on("scroll", ({ progress }: any) => {
+        const elDate = document.getElementById("date") as HTMLSpanElement;
+        elDate.innerHTML = `${Math.round(progress * 100)}`;
+      });
 
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-
-  function navMenuOpen() {
-    navMenu.classList.toggle("tw-hidden");
-    gsap.fromTo("#btn-nav-open", { opacity: 1 }, { opacity: 0, duration: 0.6 });
-    gsap.fromTo(
-      ".link-item",
-      { opacity: 0, x: -100 },
-      { opacity: 1, x: 0, duration: 0.9, stagger: 0.1 }
-    );
-    gsap.fromTo(
-      "#nav-menu",
-      {
-        x: "-500",
-      },
-      {
-        x: "0",
-        duration: 1,
-        ease: "power4.out",
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
       }
-    );
-  }
 
-  function navMenuClose() {
-    gsap.fromTo("#btn-nav-open", { opacity: 0 }, { opacity: 1, duration: 0.6 });
-    gsap.to(".link-item", {
-      opacity: 0,
-      x: -100,
-      duration: 0.9,
-      stagger: 0.1,
-      immediateRender: true,
-    });
-    gsap.fromTo(
-      "#nav-menu",
-      { x: "0" },
-      {
-        x: "-500",
-        duration: 0.8,
-        ease: "power4.in",
-        onComplete: () => {
-          navMenu.classList.toggle("tw-hidden");
-        },
+      requestAnimationFrame(raf);
+
+      function navMenuOpen() {
+        navMenu.classList.toggle("tw-hidden");
+        gsap.fromTo("#btn-nav-open", { opacity: 1 }, { opacity: 0, duration: 0.6 });
+        gsap.fromTo(
+          ".link-item",
+          { opacity: 0, x: -100 },
+          { opacity: 1, x: 0, duration: 0.9, stagger: 0.1 }
+        );
+        gsap.fromTo(
+          "#nav-menu",
+          {
+            x: "-500",
+          },
+          {
+            x: "0",
+            duration: 1,
+            ease: "power4.out",
+          }
+        );
       }
-    );
-  }
 
-  // function setDate() {
-  //   const date = new Date();
-  //   const dateLocaleTime = date.toLocaleTimeString("en-US", {
-  //     minute: "2-digit",
-  //     hour: "2-digit",
-  //     second: "2-digit",
-  //   });
-  //   const elDate = document.getElementById("date") as HTMLSpanElement;
-  //   elDate.innerHTML = dateLocaleTime;
-  // }
+      function navMenuClose() {
+        gsap.fromTo("#btn-nav-open", { opacity: 0 }, { opacity: 1, duration: 0.6 });
+        gsap.to(".link-item", {
+          opacity: 0,
+          x: -100,
+          duration: 0.9,
+          stagger: 0.1,
+          immediateRender: true,
+        });
+        gsap.fromTo(
+          "#nav-menu",
+          { x: "0" },
+          {
+            x: "-500",
+            duration: 0.8,
+            ease: "power4.in",
+            onComplete: () => {
+              navMenu.classList.toggle("tw-hidden");
+            },
+          }
+        );
+      }
 
-  btnContactNav.addEventListener("click", () => {
-    gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
-  });
+      // function setDate() {
+      //   const date = new Date();
+      //   const dateLocaleTime = date.toLocaleTimeString("en-US", {
+      //     minute: "2-digit",
+      //     hour: "2-digit",
+      //     second: "2-digit",
+      //   });
+      //   const elDate = document.getElementById("date") as HTMLSpanElement;
+      //   elDate.innerHTML = dateLocaleTime;
+      // }
 
-  logoEl.addEventListener("click", () => {
-    gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
-  });
+      btnContactNav.addEventListener("click", () => {
+        gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
+      });
 
-  btnNavOpen.addEventListener("click", (e: Event) => {
-    e.preventDefault();
-    navMenuOpen();
-  });
+      logoEl.addEventListener("click", () => {
+        gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
+      });
 
-  btnNavClose.addEventListener("click", (e: Event) => {
-    e.preventDefault();
-    navMenuClose();
-  });
+      btnNavOpen.addEventListener("click", (e: Event) => {
+        e.preventDefault();
+        navMenuOpen();
+      });
 
-  allLinksNav.forEach((link) => {
-    link.addEventListener("click", () => {
-      navMenuClose();
-    });
-  });
+      btnNavClose.addEventListener("click", (e: Event) => {
+        e.preventDefault();
+        navMenuClose();
+      });
 
-  icon.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play();
-      statusOff.classList.add("tw-hidden");
-      statusOn.classList.remove("tw-hidden");
-    } else {
-      audio.pause();
-      statusOff.classList.remove("tw-hidden");
-      statusOn.classList.add("tw-hidden");
-    }
-  });
-</script>
+      allLinksNav.forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenuClose();
+        });
+      });
+
+      icon.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          statusOff.classList.add("tw-hidden");
+          statusOn.classList.remove("tw-hidden");
+        } else {
+          audio.pause();
+          statusOff.classList.remove("tw-hidden");
+          statusOn.classList.add("tw-hidden");
+        }
+      });
+    </script>
+  </div>
+</header>

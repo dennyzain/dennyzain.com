@@ -19,7 +19,9 @@ const arrTitle = title.split(" ");
     arrTitle.map((word: string) => {
       return (
         <div class="wrapper">
-          <span class:list={[letterClass, "letter tw-inline-block tw-mr-2"]}>{word}</span>
+          <span id="hover-special" class:list={[letterClass, "letter tw-inline-block tw-mr-2"]}>
+            {word}
+          </span>
         </div>
       );
     })
@@ -35,10 +37,6 @@ const arrTitle = title.split(" ");
       y: 0,
       stagger: 0.2,
       duration: 0.8,
-      onComplete: () => {
-        document.querySelectorAll(".letter").forEach((el) => el.removeAttribute("style"));
-        document.querySelectorAll(".wrapper").forEach((el) => el.classList.remove("wrapper"));
-      },
     }
   );
 </script>

@@ -7,6 +7,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import CardBlog from "../components/CardBlog.astro";
 import SplitText from "../components/SplitText.astro";
+import Cursor from "../components/Cursor.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -68,9 +69,10 @@ const posts = (await getCollection("blog")).sort(
       </section>
       <section
         id="about"
-        class="tw-h-screen tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[.5fr_.7fr_2fr] tw-bg-[#efefef] lg:tw-grid-cols-4 lg:tw-grid-rows-[.2fr_repeat(4,1fr)] lg:tw-gap-5"
+        class="tw-min-h-screen tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr_2fr] lg:tw-grid-cols-4 lg:tw-grid-rows-[.2fr_repeat(4,1fr)] lg:tw-gap-5"
       >
         <h1
+          id="hover-special"
           class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] lg:tw-col-start-1 tw-self-center"
         >
           About
@@ -94,9 +96,14 @@ const posts = (await getCollection("blog")).sort(
         />
       </section>
       <section
-        class="tw-grid tw-grid-cols-1 tw-grid-rows-[.5fr_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5"
+        class="tw-grid tw-grid-cols-1 tw-grid-rows-[50px_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5"
       >
-        <h1 class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] tw-self-center">Work</h1>
+        <h1
+          id="hover-special"
+          class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] tw-self-center"
+        >
+          Work
+        </h1>
         <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
           <h3 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
             Quadrant Synergy Internasional
@@ -116,7 +123,7 @@ const posts = (await getCollection("blog")).sort(
       </section>
       <section
         id="blog"
-        class="tw-h-screen tw-grid tw-grid-cols-1 tw-grid-rows-[.2fr_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_2fr_.2fr]"
+        class="tw-h-screen tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_2fr_.2fr]"
       >
         <h1 class="tw-font-monumentBold tw-self-center tw-text-[32px] lg:tw-text-[35px]">
           Latest blogs
@@ -135,6 +142,7 @@ const posts = (await getCollection("blog")).sort(
           <Icon name="arrow-link" class="tw-ml-1" size={20} />
         </a>
       </section>
+      <Cursor />
     </main>
     <Footer />
     <script>
@@ -157,9 +165,7 @@ const posts = (await getCollection("blog")).sort(
         rotation: "+=360",
         repeat: -1,
       });
-      const tl = gsap.timeline({
-        onComplete: () => {},
-      });
+      const tl = gsap.timeline({});
 
       tl.from(
         ".o1",
@@ -171,10 +177,6 @@ const posts = (await getCollection("blog")).sort(
           ease: "power4",
           stagger: 0.1,
           blur: 10,
-          onComplete: () => {
-            const o1 = document.querySelectorAll(".o1") as NodeListOf<HTMLSpanElement>;
-            o1.forEach((el) => el.removeAttribute("style"));
-          },
         },
         "<0.25"
       );
