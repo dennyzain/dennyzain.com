@@ -74,7 +74,7 @@ import { Icon } from "astro-icon/components";
     >
       <HeaderLink class="link-item" href="/">Bio</HeaderLink>
       <HeaderLink class="link-item" href="/blog">Blog</HeaderLink>
-      <HeaderLink id="to-contact" class="link-item" href="#">Contact</HeaderLink>
+      <span id="to-contact" class="link-item">Contact</span>
     </div>
     <button id="btn-nav-close" class="tw-fixed tw-z-10 tw-mb-1 tw-right-5 tw-bottom-16">
       <Icon name="nav" size={50} class="tw-text-black" />
@@ -97,7 +97,7 @@ import { Icon } from "astro-icon/components";
   const navMenu = document.querySelector("#nav-menu") as HTMLDivElement;
   const allLinksNav = document.querySelectorAll(".link-item");
   const logoEl = document.querySelector("#logo") as HTMLButtonElement;
-  const btnContactNav = document.querySelector("#to-contact") as HTMLLinkElement;
+  const btnContactNavs = document.querySelectorAll("#to-contact") as NodeList;
 
   const lenis = new Lenis({
     duration: 1,
@@ -180,13 +180,15 @@ import { Icon } from "astro-icon/components";
   //   elDate.innerHTML = dateLocaleTime;
   // }
 
-  btnContactNav.addEventListener("click", () => {
-    gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
-  });
+  btnContactNavs.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
+    })
+  );
 
-  logoEl.addEventListener("click", () => {
-    gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" });
-  });
+  logoEl.addEventListener("click", () =>
+    gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" })
+  );
 
   btnNavOpen.addEventListener("click", (e: Event) => {
     e.preventDefault();
@@ -198,11 +200,11 @@ import { Icon } from "astro-icon/components";
     navMenuClose();
   });
 
-  allLinksNav.forEach((link) => {
+  allLinksNav.forEach((link) =>
     link.addEventListener("click", () => {
       navMenuClose();
-    });
-  });
+    })
+  );
 
   icon.addEventListener("click", () => {
     if (audio.paused) {
