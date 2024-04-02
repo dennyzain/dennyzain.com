@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import tailwind from "@astrojs/tailwind";
 
@@ -16,7 +15,7 @@ export default defineConfig({
   ],
   markdown: {
     shikiConfig: {
-      theme: 'one-dark-pro',
+      theme: "one-dark-pro",
       langs: [],
       wrap: true,
       transformers: [],
