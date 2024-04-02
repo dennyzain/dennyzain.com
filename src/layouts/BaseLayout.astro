@@ -1,0 +1,23 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Cursor from "../components/Cursor.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title || SITE_TITLE} description={description || SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <slot />
+    <Cursor />
+  </body>
+</html>

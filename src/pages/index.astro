@@ -1,207 +1,141 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { Icon } from "astro-icon/components";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE } from "../consts";
 import { getCollection } from "astro:content";
 import CardBlog from "../components/CardBlog.astro";
 import SplitText from "../components/SplitText.astro";
-import Cursor from "../components/Cursor.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="tw-relative">
-    <Header title={SITE_TITLE} />
-    <main>
-      <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
-        <div class="tw-relative tw-h-9">
-          <div class="tw-absolute o2 -tw-bottom-20 -tw-right-16">
-            <svg width="100%" height="100%" viewBox="0 0 1400 1400">
-              <def>
-                <path
-                  id="circle-3"
-                  d="M487,700.5A213.5,213.5 0 1 1914,700.5A213.5,213.5 0 1 1487,700.5"></path>
-              </def>
-              <text
-                class="circles__text tw-text-black tw-text-[60px] tw-uppercase tw-origin-[400px_400px] tw-will-change-[transform_opacity] lg:tw-text-[85px]"
+<BaseLayout>
+  <Header title={SITE_TITLE} />
+  <main>
+    <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
+      <div class="tw-relative tw-h-9">
+        <div class="tw-absolute o2 -tw-bottom-20 -tw-right-16">
+          <svg width="100%" height="100%" viewBox="0 0 1400 1400">
+            <def>
+              <path
+                id="circle-3"
+                d="M487,700.5A213.5,213.5 0 1 1914,700.5A213.5,213.5 0 1 1487,700.5"></path>
+            </def>
+            <text
+              class="circles__text tw-text-black tw-text-[60px] tw-uppercase tw-origin-[400px_400px] tw-will-change-[transform_opacity] lg:tw-text-[85px]"
+            >
+              <textPath
+                class="circles__text-path"
+                xlink:href="#circle-3"
+                aria-label=""
+                textLength="1250"
               >
-                <textPath
-                  class="circles__text-path"
-                  xlink:href="#circle-3"
-                  aria-label=""
-                  textLength="1250"
-                >
-                  available for freelance
-                </textPath>
-              </text>
-            </svg>
-          </div>
+                available for freelance
+              </textPath>
+            </text>
+          </svg>
         </div>
-        <h1 class="tw-text-[24px] tw-text-black tw-font-monumentBold tw-tracking-wide tw-pb-5">
-          <SplitText
-            title="Hi there, I’m Denny Abbas Zain a multidisciplinary developer"
-            letterClass="lg:tw-text-[45px] lg:tw-py-3 lg:tw-my-2 lg:!tw-mr-5"
-          />
-        </h1>
-        <div class="tw-self-end">
-          <button
-            id="scroll-down"
-            class="o1 tw-text-[20px] tw-font-monument link lg:tw-text-[33px]"
-          >
-            Let’s connect
-          </button>
-          <Icon name="arrow-link" size={30} class={"tw-inline-block tw-animate-bounce"} />
-        </div>
-        <p
-          class="o1 tw-text-[15px] tw-text-center tw-mt-10 -tw-bottom-24 tw-relative lg:tw-text-[20px]"
-        >
-          scroll down <Icon name="scroll" size={30} class={"tw-inline-block"} />
-        </p>
-      </section>
-      <section
-        id="about"
-        class="tw-min-h-screen tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr_2fr] lg:tw-grid-cols-4 lg:tw-grid-rows-[.2fr_repeat(4,1fr)] lg:tw-gap-5"
-      >
-        <h1
-          id="hover-special"
-          class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] lg:tw-col-start-1 tw-self-center"
-        >
-          About
-        </h1>
-        <p
-          class="lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[23px]"
-        >
-          You can call me Denny, a passionate software developer with a strong focus on frontend
-          development and sometimes i'm also <b>fullstack developer</b>. Crafting seamless user
-          experiences and translating designs into elegant code is where my expertise truly shines.
-          With an insatiable curiosity and a knack for problem-solving, I'm driven to create
-          innovative solutions that resonate with users on a profound level.
-        </p>
-        <img
-          data-speed="0.1"
-          src="/images/denny-tampan.jpeg"
-          alt="img-1"
-          class="tw-rounded-3xl tw-mx-auto tw-h-[95%] tw-object-center tw-object-cover md:tw-object-left-top md:tw-h-3/5 lg:tw-row-start-3 lg:tw-row-span-3 lg:tw-col-start-3 lg:tw-col-span-3 lg:tw-h-4/5"
-          width="100%"
-          height="100%"
+      </div>
+      <h1 class="tw-text-[24px] tw-text-black tw-font-monumentBold tw-tracking-wide tw-pb-5">
+        <SplitText
+          title="Hi there, I’m Denny Abbas Zain a multidisciplinary developer"
+          letterClass="lg:tw-text-[45px] lg:tw-py-3 lg:tw-my-2 lg:!tw-mr-5"
         />
-      </section>
-      <section
-        class="tw-grid tw-grid-cols-1 tw-grid-rows-[50px_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5"
+      </h1>
+      <div class="tw-self-end">
+        <button id="scroll-down" class="o1 tw-text-[20px] tw-font-monument link lg:tw-text-[33px]">
+          Let’s connect
+        </button>
+        <Icon name="arrow-link" size={30} class={"tw-inline-block tw-animate-bounce"} />
+      </div>
+      <p
+        class="o1 tw-text-[15px] tw-text-center tw-mt-10 -tw-bottom-24 tw-relative lg:tw-text-[20px]"
       >
-        <h1
-          id="hover-special"
-          class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] tw-self-center"
+        scroll down <Icon name="scroll" size={30} class={"tw-inline-block"} />
+      </p>
+    </section>
+    <section
+      id="about"
+      class="tw-min-h-screen tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr_2fr] lg:tw-grid-cols-4 lg:tw-grid-rows-[.2fr_repeat(4,1fr)] lg:tw-gap-5"
+    >
+      <h1
+        id="hover-special"
+        class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] lg:tw-col-start-1 tw-self-center"
+      >
+        About
+      </h1>
+      <p
+        class="lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[23px]"
+      >
+        You can call me Denny, a passionate software developer with a strong focus on frontend
+        development and sometimes i'm also <b>fullstack developer</b>. Crafting seamless user
+        experiences and translating designs into elegant code is where my expertise truly shines.
+        With an insatiable curiosity and a knack for problem-solving, I'm driven to create
+        innovative solutions that resonate with users on a profound level.
+      </p>
+      <img
+        data-speed="0.1"
+        src="/images/denny-tampan.jpeg"
+        alt="img-1"
+        class="tw-rounded-3xl tw-mx-auto tw-h-[95%] tw-object-center tw-object-cover md:tw-object-left-top md:tw-h-3/5 lg:tw-row-start-3 lg:tw-row-span-3 lg:tw-col-start-3 lg:tw-col-span-3 lg:tw-h-4/5"
+        width="100%"
+        height="100%"
+      />
+    </section>
+    <section
+      class="tw-grid tw-grid-cols-1 tw-grid-rows-[50px_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5"
+    >
+      <h1
+        id="hover-special"
+        class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] tw-self-center"
+      >
+        Work
+      </h1>
+      <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
+        <h3 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
+          Quadrant Synergy Internasional
+        </h3>
+        <h3
+          class="tw-font-geist tw-font-semibold tw-flex tw-justify-between tw-text-[16px] lg:tw-text-[26px]"
         >
-          Work
-        </h1>
-        <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
-          <h3 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
-            Quadrant Synergy Internasional
-          </h3>
-          <h3
-            class="tw-font-geist tw-font-semibold tw-flex tw-justify-between tw-text-[16px] lg:tw-text-[26px]"
-          >
-            <span>Frontend Developer</span>
-            <span class="tw-mr-3">2022 - Present</span>
-          </h3>
-          <p class="lg:tw-text-[19px]">
-            These was where my journey began. There, I worked on many projects in website. I started
-            off as a frontend developer, then tried to create unified codebase for web. Mayority of
-            the websites were created with Reactjs(CRA) and migrated to Nextjs.
-          </p>
-        </div>
-      </section>
-      <section
-        id="blog"
-        class="tw-h-screen tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_2fr_.2fr]"
-      >
-        <h1 class="tw-font-monumentBold tw-self-center tw-text-[32px] lg:tw-text-[35px]">
-          Latest blogs
-        </h1>
-        <div class="tw-flex tw-flex-col tw-space-y-10 lg:tw-space-y-5">
-          {
-            posts.slice(0, 3).map((post) => (
-              <a class="tw-inline-block" href={`/blog/${post.slug}/`}>
-                <CardBlog {...post.data} />
-              </a>
-            ))
-          }
-        </div>
-        <a href="/blog" class="tw-flex tw-items-center">
-          <span class="link lg:tw-text-[19px]">see more blogs </span>
-          <Icon name="arrow-link" class="tw-ml-1" size={20} />
-        </a>
-      </section>
-      <Cursor />
-    </main>
-    <Footer />
-    <script>
-      import gsap from "gsap";
-      import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-
-      gsap.registerPlugin(ScrollToPlugin);
-      gsap.registerPlugin(ScrollTrigger);
-
-      const toContactEl = document.querySelector("#scroll-down") as HTMLButtonElement;
-
-      toContactEl.addEventListener("click", () => {
-        gsap.to(window, { duration: 1.7, scrollTo: { y: "#contacts" }, ease: "power4.inOut" });
-      });
-
-      gsap.set("text.circles__text", { transformOrigin: "50% 50%" });
-      gsap.to("text.circles__text", {
-        duration: 12,
-        ease: "none",
-        rotation: "+=360",
-        repeat: -1,
-      });
-      const tl = gsap.timeline({});
-
-      tl.from(
-        ".o1",
+          <span>Frontend Developer</span>
+          <span class="tw-mr-3">2022 - Present</span>
+        </h3>
+        <p class="lg:tw-text-[19px]">
+          These was where my journey began. There, I worked on many projects in website. I started
+          off as a frontend developer, then tried to create unified codebase for web. Mayority of
+          the websites were created with Reactjs(CRA) and migrated to Nextjs.
+        </p>
+      </div>
+    </section>
+    <section
+      id="blog"
+      class="tw-h-screen tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_2fr_.2fr]"
+    >
+      <h1 class="tw-font-monumentBold tw-self-center tw-text-[32px] lg:tw-text-[35px]">
+        Latest blogs
+      </h1>
+      <div class="tw-flex tw-flex-col tw-space-y-10 lg:tw-space-y-5">
         {
-          duration: 2,
-          skewX: -30,
-          yPercent: 100,
-          xPercent: 50,
-          ease: "power4",
-          stagger: 0.1,
-          blur: 10,
-        },
-        "<0.25"
-      );
-
-      tl.fromTo(
-        ".o2",
-        {
-          skewX: 0,
-          opacity: 0,
-          yPercent: 100,
-          xPercent: 50,
-          blur: 10,
-        },
-        {
-          skewX: -25,
-          opacity: 1,
-          yPercent: 0,
-          xPercent: 0,
-          ease: "power4",
-          stagger: 0.1,
-          blur: 0,
-          duration: 2,
-        },
-        "<0.25"
-      );
-    </script>
-  </body>
-</html>
+          posts.slice(0, 3).map((post) => (
+            <a class="tw-inline-block" href={`/blog/${post.slug}/`}>
+              <CardBlog {...post.data} />
+            </a>
+          ))
+        }
+      </div>
+      <a href="/blog" class="tw-flex tw-items-center">
+        <span class="link lg:tw-text-[19px]">see more blogs </span>
+        <Icon name="arrow-link" class="tw-ml-1" size={20} />
+      </a>
+    </section>
+  </main>
+  <Footer />
+  <script>
+    import "../scripts/main";
+  </script>
+</BaseLayout>
