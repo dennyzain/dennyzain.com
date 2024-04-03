@@ -16,8 +16,8 @@ const btnNavClose = document.querySelector(
 const navMenu = document.querySelector("#nav-menu") as HTMLDivElement;
 const allLinksNav = document.querySelectorAll(".link-item");
 const logoEl = document.querySelector("#logo") as HTMLButtonElement;
-
 const btnContactNavs = document.querySelectorAll("#to-contact") as NodeList;
+
 interface PropsType {
   progress: number;
   limit: number;

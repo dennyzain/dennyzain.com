@@ -69,7 +69,7 @@ const posts = (await getCollection("blog")).sort(
         About
       </h1>
       <p
-        class="lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[23px]"
+        class="tw-leading-7 lg:tw-leading-9 lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[23px]"
       >
         You can call me Denny, a passionate software developer with a strong focus on frontend
         development and sometimes i'm also <b>fullstack developer</b>. Crafting seamless user
@@ -105,7 +105,7 @@ const posts = (await getCollection("blog")).sort(
           <span>Frontend Developer</span>
           <span class="tw-mr-3">2022 - Present</span>
         </h3>
-        <p class="lg:tw-text-[19px]">
+        <p class="tw-leading-7 lg:tw-text-[19px] lg:tw-leading-9">
           These was where my journey began. There, I worked on many projects in website. I started
           off as a frontend developer, then tried to create unified codebase for web. Mayority of
           the websites were created with Reactjs(CRA) and migrated to Nextjs.
@@ -114,12 +114,14 @@ const posts = (await getCollection("blog")).sort(
     </section>
     <section
       id="blog"
-      class="tw-h-screen tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_2fr_.2fr]"
+      class="tw-h-screen tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_auto_.2fr]"
     >
-      <h1 class="tw-font-monumentBold tw-self-center tw-text-[32px] lg:tw-text-[35px]">
+      <h1
+        class="tw-font-monumentBold tw-self-center tw-text-[32px] tw-row-start-1 lg:tw-text-[35px]"
+      >
         Latest blogs
       </h1>
-      <div class="tw-flex tw-flex-col tw-space-y-10 lg:tw-space-y-5">
+      <div class="tw-row-start-2 tw-space-y-10 lg:tw-space-y-5">
         {
           posts.slice(0, 3).map((post) => (
             <a class="tw-inline-block" href={`/blog/${post.slug}/`}>
@@ -128,7 +130,7 @@ const posts = (await getCollection("blog")).sort(
           ))
         }
       </div>
-      <a href="/blog" class="tw-flex tw-items-center">
+      <a href="/blog" class="tw-flex tw-items-center tw-row-start-3">
         <span class="link lg:tw-text-[19px]">see more blogs </span>
         <Icon name="arrow-link" class="tw-ml-1" size={20} />
       </a>
