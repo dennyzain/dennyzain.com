@@ -11,7 +11,7 @@ export default defineConfig({
     mdx(),
     sitemap(),
     tailwind(),
-    icon({ iconDir: "public/icons" }),
+    icon({ iconDir: "src/assets/icons" }),
   ],
   markdown: {
     shikiConfig: {

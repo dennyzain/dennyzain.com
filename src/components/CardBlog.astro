@@ -1,13 +1,21 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "./FormattedDate.astro";
+import ImageCloud from "./ImageCloud.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, pubDate, heroImage, tags, minRead, description } = Astro.props;
+const {
+  title,
+  pubDate,
+  heroImage = "/images-heros/blog-placeholder-3.jpg",
+  tags,
+  minRead,
+  description,
+} = Astro.props;
 ---
 
-<div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[1fr_auto_1fr] tw-gap-1 lg:tw-gap-2">
+<div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[.2fr_auto_1fr] tw-gap-1 lg:tw-gap-2">
   <div class="tw-text-[12px] lg:tw-text-[18px]">
     <span>{minRead} min read</span> • <FormattedDate date={pubDate} />
   </div>
@@ -20,16 +28,16 @@ const { title, pubDate, heroImage, tags, minRead, description } = Astro.props;
       {description.length < 50 ? description : `${description.substring(0, 150)}...`}
     </p>
   </div>
-  <img
-    class="tw-col-start-2 tw-row-start-2"
+  <ImageCloud
+    classWrapper="tw-col-start-2 tw-row-start-2"
     width="400"
     height="150"
-    src={heroImage}
-    alt="thumbnail"
+    pathImg={heroImage}
+    alt="A thumbnail of the article"
   />
-  <div class="tw-col-start-1 tw-row-start-3 tw-space-x-1">
+  <div class="tw-col-start-1 tw-row-start-3 tw-space-x-1 tw-space-y-1">
     {
-      tags.map((tag) => (
+      tags.map((tag: string) => (
         <span class="tw-inline-block tw-bg-black tw-text-white tw-text-[12px] tw-text-center tw-rounded-xl tw-box-border tw-p-[5px] tw-min-w-10 lg:tw-text-[14px] lg:tw-p-[5px]">
           {tag}
         </span>

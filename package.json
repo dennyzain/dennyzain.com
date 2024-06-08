@@ -25,10 +25,12 @@
     "@astrojs/rss": "^4.0.2",
     "@astrojs/sitemap": "^3.1.2",
     "@astrojs/tailwind": "^5.1.0",
+    "@cloudinary/url-gen": "^1.19.0",
     "@studio-freight/lenis": "^1.0.34",
     "astro": "^4.2.1",
     "astro-icon": "^1.0.4",
     "gsap": "^3.12.5",
+    "sharp": "^0.33.4",
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
