@@ -7,6 +7,8 @@ import { getCollection } from "astro:content";
 import CardBlog from "../components/CardBlog.astro";
 import SplitText from "../components/SplitText.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import picOfAuthor from "../assets/images/denny-tampan.jpeg";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -17,22 +19,23 @@ const posts = (await getCollection("blog")).sort(
   <Header title={SITE_TITLE} />
   <main>
     <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
-      <div class="tw-relative tw-h-9">
-        <div class="tw-absolute o2 -tw-bottom-20 -tw-right-16">
-          <svg width="100%" height="100%" viewBox="0 0 1400 1400">
+      <div class="tw-relative tw-h-24 tw-w-24 tw-self-end">
+        <div class="tw-absolute o2 tw-bottom-4 tw-right-0 lg:tw-bottom-4 lg:tw-right-5">
+          <svg
+            class="tw-w-[130px] tw-h-[130px] lg:tw-w-[170px] lg:tw-h-[170px]"
+            viewBox="0 0 200 200"
+          >
             <def>
-              <path
-                id="circle-3"
-                d="M487,700.5A213.5,213.5 0 1 1914,700.5A213.5,213.5 0 1 1487,700.5"></path>
+              <path id="circle-3" d="M50,100A50,50 0 1 1 150,100A50,50 0 1 1 50,100"></path>
             </def>
             <text
-              class="circles__text tw-text-black tw-text-[60px] tw-uppercase tw-origin-[400px_400px] tw-will-change-[transform_opacity] lg:tw-text-[85px]"
+              class="circles__text tw-text-black tw-text-[16px] tw-uppercase tw-origin-[100px_100px] tw-will-change-[transform_opacity] lg:tw-text-[17px]"
             >
               <textPath
                 class="circles__text-path"
                 xlink:href="#circle-3"
                 aria-label=""
-                textLength="1250"
+                textLength="300"
               >
                 available for freelance
               </textPath>
@@ -77,13 +80,11 @@ const posts = (await getCollection("blog")).sort(
         With an insatiable curiosity and a knack for problem-solving, I'm driven to create
         innovative solutions that resonate with users on a profound level.
       </p>
-      <img
+      <Image
         data-speed="0.1"
-        src="/images/denny-tampan.jpeg"
-        alt="img-1"
+        src={picOfAuthor}
+        alt="denny-abbas-zain-tampan"
         class="tw-rounded-3xl tw-mx-auto tw-h-[95%] tw-object-center tw-object-cover md:tw-object-left-top md:tw-h-3/5 lg:tw-row-start-3 lg:tw-row-span-3 lg:tw-col-start-3 lg:tw-col-span-3 lg:tw-h-4/5"
-        width="100%"
-        height="100%"
       />
     </section>
     <section
@@ -114,14 +115,14 @@ const posts = (await getCollection("blog")).sort(
     </section>
     <section
       id="blog"
-      class="tw-h-screen tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_auto_.2fr]"
+      class="tw-min-h-fit tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_auto_.2fr]"
     >
       <h1
         class="tw-font-monumentBold tw-self-center tw-text-[32px] tw-row-start-1 lg:tw-text-[35px]"
       >
         Latest blogs
       </h1>
-      <div class="tw-row-start-2 tw-space-y-10 lg:tw-space-y-5">
+      <div class="tw-row-start-2 lg:tw-space-y-5">
         {
           posts.slice(0, 3).map((post) => (
             <a class="tw-inline-block" href={`/blog/${post.slug}/`}>

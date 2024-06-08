@@ -1,0 +1,41 @@
+---
+import { Cloudinary } from "@cloudinary/url-gen";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+
+interface Props {
+  pathImg: string;
+  width?: number | string;
+  height?: number | string;
+  authorOfImg?: string;
+  classImg?: string;
+  classWrapper?: string;
+  alt?: string;
+}
+
+const { pathImg, width, height, authorOfImg, alt, classImg, classWrapper } = Astro.props;
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: import.meta.env.CLOUDINARY_CLOUD_NAME,
+  },
+});
+const image = cld.image(`${import.meta.env.CLOUDINARY_ROOT_FOLDER}/${pathImg}`);
+const imgResize = image.resize(fill());
+---
+
+<div class:list={["tw-flex tw-justify-center tw-flex-col", classWrapper]}>
+  <img
+    src={imgResize.toURL()}
+    width={width}
+    height={height}
+    alt={alt ?? "image"}
+    class={classImg}
+  />
+  {
+    authorOfImg && (
+      <span class="tw-inline-block tw-text-center tw-text-xs tw-font-medium tw-text-gray-600">
+        photo by: {authorOfImg}
+      </span>
+    )
+  }
+</div>
