@@ -21,8 +21,8 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         env:
-          CLOUDINARY_CLOUD_NAME: ${{ env.CLOUDINARY_CLOUD_NAME }}
-          CLOUDINARY_ROOT_FOLDER: ${{ env.CLOUDINARY_ROOT_FOLDER }}
+          PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ env.CLOUDINARY_CLOUD_NAME }}
+          PUBLIC_CLOUDINARY_ROOT_FOLDER: ${{ env.CLOUDINARY_ROOT_FOLDER }}
         with:
           path: .
           node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)

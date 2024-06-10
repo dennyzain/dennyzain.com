@@ -1,6 +1,7 @@
 ---
 import { Cloudinary } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
+import { CLOUDINARY_CLOUD_NAME, CLOUDINARY_ROOT_FOLDER } from "../consts";
 
 interface Props {
   pathImg: string;
@@ -16,10 +17,10 @@ const { pathImg, width, height, authorOfImg, alt, classImg, classWrapper } = Ast
 
 const cld = new Cloudinary({
   cloud: {
-    cloudName: import.meta.env.CLOUDINARY_CLOUD_NAME,
+    cloudName: CLOUDINARY_CLOUD_NAME,
   },
 });
-const image = cld.image(`${import.meta.env.CLOUDINARY_ROOT_FOLDER}/${pathImg}`);
+const image = cld.image(`${CLOUDINARY_ROOT_FOLDER}/${pathImg}`);
 const imgResize = image.resize(fill());
 ---
 
