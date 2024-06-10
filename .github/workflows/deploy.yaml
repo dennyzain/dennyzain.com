@@ -3,10 +3,8 @@ name: Deploy site to GitHub Pages
 on:
   push:
     branches: [master]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
@@ -15,18 +13,18 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+      PUBLIC_CLOUDINARY_ROOT_FOLDER: ${{ secrets.CLOUDINARY_ROOT_FOLDER }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
         uses: withastro/action@v2
-        env:
-          PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ env.CLOUDINARY_CLOUD_NAME }}
-          PUBLIC_CLOUDINARY_ROOT_FOLDER: ${{ env.CLOUDINARY_ROOT_FOLDER }}
         with:
           path: .
-          node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
-          package-manager: pnpm@8.9.2 # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+          node-version: 20
+          package-manager: pnpm@8.9.2
 
   deploy:
     needs: build
