@@ -9,7 +9,7 @@ import { Icon } from "astro-icon/components";
     -webkit-text-stroke-color: black;
   }
 </style>
-<header>
+<section>
   <nav
     class="tw-flex tw-items-center tw-fixed tw-mix-blend-difference tw-top-0 tw-left-0 tw-w-full tw-px-[17px] tw-z-10"
   >
@@ -34,25 +34,25 @@ import { Icon } from "astro-icon/components";
     id="sound"
     class="tw-fixed -tw-left-6 tw-bottom-16 lg:tw-left-[21%] tw-mix-blend-difference"
   >
-    <div class="tw-text-[18px] -tw-rotate-90">
+    <div class="tw-text-[18px] -tw-rotate-90 lg:tw-text-[20px] lg:tw-font-medium tw-bg-black">
       <span class="tw-text-white"> sound</span>
-      <span id="sound-off" class="tw-text-gray-400 tw-animate-fade-in">off</span>
+      <span id="sound-off" class="tw-text-white tw-animate-fade-in">off</span>
       <span id="sound-on" class="tw-text-white tw-animate-fade-in tw-hidden">on</span>
     </div>
   </section>
   <section
-    class="tw-fixed tw-right-5 tw-bottom-16 lg:tw-right-[23%] lg:tw-flex lg:tw-flex-col tw-mix-blend-difference"
+    class="tw-fixed tw-right-5 tw-bottom-16 tw-z-[999] lg:tw-right-[23%] lg:tw-flex lg:tw-flex-col tw-mix-blend-difference"
   >
-    <button id="btn-nav-open" class="lg:tw-hidden">
+    <button type="button" aria-label="Open Navigation" id="btn-nav-open" class="lg:tw-hidden">
       <Icon name="nav" size={50} />
     </button>
-    <a href="/">
+    <a href="/" aria-label="Go to Bio">
       <span
         class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-inline-block"
         >Bio</span
       >
     </a>
-    <a href="/blog">
+    <a href="/blog" aria-label="Go to Blog">
       <span
         class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-inline-block"
         >Blog</span
@@ -80,7 +80,7 @@ import { Icon } from "astro-icon/components";
       <Icon name="nav" size={50} class="tw-text-black" />
     </button>
   </nav>
-</header>
+</section>
 <script>
   import "../scripts/header";
 </script>

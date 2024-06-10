@@ -8,7 +8,7 @@ type Props = CollectionEntry<"blog">["data"];
 const {
   title,
   pubDate,
-  heroImage = "/images-heros/blog-placeholder-3.jpg",
+  heroImage = "../assets/images/denny-head.jpg",
   tags,
   minRead,
   description,
@@ -20,7 +20,7 @@ const {
     <span>{minRead} min read</span> • <FormattedDate date={pubDate} />
   </div>
   <div class="tw-col-start-1 tw-row-start-2">
-    <h3 class="tw-font-bold lg:tw-text-[25px]">{title}</h3>
+    <h1 class="tw-font-bold lg:tw-text-[25px]">{title}</h1>
     <p class="tw-text-[14px] lg:tw-hidden">
       {description.length < 25 ? description : `${description.substring(0, 25)}...`}
     </p>
@@ -30,8 +30,8 @@ const {
   </div>
   <ImageCloud
     classWrapper="tw-col-start-2 tw-row-start-2"
-    width="400"
-    height="150"
+    width={400}
+    height={150}
     pathImg={heroImage}
     alt="A thumbnail of the article"
   />

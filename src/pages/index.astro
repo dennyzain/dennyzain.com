@@ -8,7 +8,7 @@ import CardBlog from "../components/CardBlog.astro";
 import SplitText from "../components/SplitText.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import picOfAuthor from "../assets/images/denny-tampan.jpeg";
+import picOfAuthor from "../assets/images/denny-tampan.jpg";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -43,13 +43,15 @@ const posts = (await getCollection("blog")).sort(
           </svg>
         </div>
       </div>
-      <h1 class="tw-text-[24px] tw-text-black tw-font-monumentBold tw-tracking-wide tw-pb-5">
+      <h1
+        class="tw-text-black tw-font-monumentBold tw-tracking-wide tw-max-w-[300px] md:tw-max-w-[420px]"
+      >
         <SplitText
           title="Hi there, I’m Denny Abbas Zain a multidisciplinary developer"
-          letterClass="lg:tw-text-[45px] lg:tw-py-3 lg:tw-my-2 lg:!tw-mr-5"
+          letterClass="tw-text-[24px] md:tw-text-[32px] lg:tw-text-[45px] lg:tw-py-3 lg:tw-my-2 lg:!tw-mr-5"
         />
       </h1>
-      <div class="tw-self-end">
+      <div class="tw-self-end tw-mt-5">
         <button id="scroll-down" class="o1 tw-text-[20px] tw-font-monument link lg:tw-text-[33px]">
           Let’s connect
         </button>
@@ -81,9 +83,10 @@ const posts = (await getCollection("blog")).sort(
         innovative solutions that resonate with users on a profound level.
       </p>
       <Image
-        data-speed="0.1"
         src={picOfAuthor}
         alt="denny-abbas-zain-tampan"
+        quality="high"
+        }
         class="tw-rounded-3xl tw-mx-auto tw-h-[95%] tw-object-center tw-object-cover md:tw-object-left-top md:tw-h-3/5 lg:tw-row-start-3 lg:tw-row-span-3 lg:tw-col-start-3 lg:tw-col-span-3 lg:tw-h-4/5"
       />
     </section>
@@ -97,9 +100,9 @@ const posts = (await getCollection("blog")).sort(
         Work
       </h1>
       <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
-        <h3 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
+        <h2 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
           Quadrant Synergy Internasional
-        </h3>
+        </h2>
         <h3
           class="tw-font-geist tw-font-semibold tw-flex tw-justify-between tw-text-[16px] lg:tw-text-[26px]"
         >

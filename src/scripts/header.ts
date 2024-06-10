@@ -27,7 +27,7 @@ interface PropsType {
 }
 
 const lenis = new Lenis({
-  duration: 1,
+  duration: 2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   gestureOrientation: "vertical",
   touchMultiplier: 2,
@@ -112,7 +112,7 @@ btnContactNavs.forEach((btn) => {
 });
 
 logoEl.addEventListener("click", () =>
-  gsap.to(window, { duration: 1.7, scrollTo: { y: 0 }, ease: "power4.inOut" }),
+  gsap.to(window, { duration: 1, scrollTo: { y: 0 }, ease: "power4.inOut" }),
 );
 
 btnNavOpen.addEventListener("click", (e: Event) => {
