@@ -1,12 +1,13 @@
 ---
 import { Cloudinary } from "@cloudinary/url-gen";
+import { Image } from "astro:assets";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { CLOUDINARY_CLOUD_NAME, CLOUDINARY_ROOT_FOLDER } from "../consts";
 
 interface Props {
   pathImg: string;
-  width?: number | string;
-  height?: number | string;
+  width: number;
+  height: number;
   authorOfImg?: string;
   classImg?: string;
   classWrapper?: string;
@@ -25,12 +26,12 @@ const imgResize = image.resize(fill());
 ---
 
 <div class:list={["tw-flex tw-justify-center tw-flex-col", classWrapper]}>
-  <img
+  <Image
     src={imgResize.toURL()}
     width={width}
     height={height}
     alt={alt ?? "image"}
-    class={classImg}
+    class:list={["tw-self-center", classImg]}
   />
   {
     authorOfImg && (
