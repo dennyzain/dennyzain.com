@@ -10,12 +10,15 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ vars.CLOUDINARY_CLOUD_NAME }}
+  PUBLIC_CLOUDINARY_ROOT_FOLDER: ${{ vars.CLOUDINARY_ROOT_FOLDER }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
-      PUBLIC_CLOUDINARY_ROOT_FOLDER: ${{ secrets.CLOUDINARY_ROOT_FOLDER }}
+    environment:
+      name: production
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
