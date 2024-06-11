@@ -20,7 +20,7 @@ const {
     <span>{minRead} min read</span> • <FormattedDate date={pubDate} />
   </div>
   <div class="tw-col-start-1 tw-row-start-2">
-    <h1 class="tw-font-bold lg:tw-text-[25px]">{title}</h1>
+    <h1 class="tw-font-bold tw-text-[20px] lg:tw-text-[25px]">{title}</h1>
     <p class="tw-text-[14px] lg:tw-hidden">
       {description.length < 25 ? description : `${description.substring(0, 25)}...`}
     </p>
@@ -29,7 +29,8 @@ const {
     </p>
   </div>
   <ImageCloud
-    classWrapper="tw-col-start-2 tw-row-start-2"
+    classWrapper="tw-col-start-2 tw-row-start-2 tw-shadow-xl"
+    classImg="tw-object-cover tw-h-full tw-w-full tw-shadow-xl"
     width={400}
     height={150}
     pathImg={heroImage}
@@ -38,7 +39,7 @@ const {
   <div class="tw-col-start-1 tw-row-start-3 tw-space-x-1 tw-space-y-1">
     {
       tags.map((tag: string) => (
-        <span class="tw-inline-block tw-bg-black tw-text-white tw-text-[12px] tw-text-center tw-rounded-xl tw-box-border tw-p-[5px] tw-min-w-10 lg:tw-text-[14px] lg:tw-p-[5px]">
+        <span class="tw-inline-block tw-bg-black tw-text-white tw-text-[11px] tw-text-center tw-rounded-xl tw-box-border tw-px-[5px] tw-py-[2px] tw-min-w-10 lg:tw-text-[14px] lg:tw-p-[5px]">
           {tag}
         </span>
       ))
