@@ -5,14 +5,7 @@ import ImageCloud from "./ImageCloud.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const {
-  title,
-  pubDate,
-  heroImage = "../assets/images/denny-head.jpg",
-  tags,
-  minRead,
-  description,
-} = Astro.props;
+const { title, pubDate, heroImage = "", tags, minRead, description } = Astro.props;
 ---
 
 <div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[.2fr_auto_1fr] tw-gap-1 lg:tw-gap-2">
