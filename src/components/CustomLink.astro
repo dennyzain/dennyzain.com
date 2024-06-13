@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  link: {
+    name: string;
+    url: string;
+  };
+  newTab?: boolean;
+  classText?: string;
+  classWrapper?: string;
+  sizeIcon?: number;
+  ariaLabel?: string;
+}
+const { link, newTab, sizeIcon = 20, classText, classWrapper, ariaLabel = "" } = Astro.props;
+const propNewTab = newTab ? { target: "_blank", rel: "noopener noreferrer" } : {};
+---
+
+<a
+  href={link.url}
+  {...propNewTab}
+  aria-label={ariaLabel}
+  class:list={["tw-flex tw-items-center", classWrapper]}
+>
+  <span class:list={["link", classText]}>{link.name}</span>
+  <Icon name="arrow-link" class="tw-ml-1" size={sizeIcon} />
+</a>

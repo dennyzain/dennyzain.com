@@ -5,7 +5,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import { CLOUDINARY_CLOUD_NAME, CLOUDINARY_ROOT_FOLDER } from "../consts";
 
 interface Props {
-  pathImg: string;
+  publicId: string;
   width: number;
   height: number;
   authorOfImg?: string;
@@ -14,14 +14,14 @@ interface Props {
   alt?: string;
 }
 
-const { pathImg, width, height, authorOfImg, alt, classImg, classWrapper } = Astro.props;
+const { publicId, width, height, authorOfImg, alt, classImg, classWrapper } = Astro.props;
 
 const cld = new Cloudinary({
   cloud: {
     cloudName: CLOUDINARY_CLOUD_NAME,
   },
 });
-const image = cld.image(`${CLOUDINARY_ROOT_FOLDER}/${pathImg}`);
+const image = cld.image(`${CLOUDINARY_ROOT_FOLDER}/${publicId}`);
 const imgResize = image.resize(fill());
 ---
 
@@ -35,7 +35,7 @@ const imgResize = image.resize(fill());
   />
   {
     authorOfImg && (
-      <span class="tw-inline-block tw-text-center tw-text-xs tw-font-medium tw-text-gray-600">
+      <span class="tw-inline-block tw-text-center tw-text-xs tw-font-medium tw-mt-1 tw-text-gray-600">
         photo by: {authorOfImg}
       </span>
     )

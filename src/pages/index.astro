@@ -7,8 +7,7 @@ import { getCollection } from "astro:content";
 import CardBlog from "../components/CardBlog.astro";
 import SplitText from "../components/SplitText.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import picOfAuthor from "../assets/images/denny-tampan.jpg";
+import CustomLink from "../components/CustomLink.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -63,10 +62,7 @@ const posts = (await getCollection("blog")).sort(
         scroll down <Icon name="scroll" size={30} class={"tw-inline-block"} />
       </p>
     </section>
-    <section
-      id="about"
-      class="tw-min-h-screen tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr_2fr] lg:tw-grid-cols-4 lg:tw-grid-rows-[.2fr_repeat(4,1fr)] lg:tw-gap-5"
-    >
+    <section id="about" class="tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr]">
       <h1
         id="hover-special"
         class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] lg:tw-col-start-1 tw-self-center"
@@ -82,16 +78,9 @@ const posts = (await getCollection("blog")).sort(
         With an insatiable curiosity and a knack for problem-solving, I'm driven to create
         innovative solutions that resonate with users on a profound level.
       </p>
-      <Image
-        src={picOfAuthor}
-        alt="denny-abbas-zain-tampan"
-        quality="high"
-        }
-        class="tw-rounded-3xl tw-mx-auto tw-h-[95%] tw-object-center tw-object-cover md:tw-object-left-top md:tw-h-3/5 lg:tw-row-start-3 lg:tw-row-span-3 lg:tw-col-start-3 lg:tw-col-span-3 lg:tw-h-4/5"
-      />
     </section>
     <section
-      class="tw-grid tw-grid-cols-1 tw-grid-rows-[50px_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5"
+      class="tw-mt-4 tw-grid tw-grid-cols-1 tw-grid-rows-[50px_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5 lg:tw-mt-14"
     >
       <h1
         id="hover-special"
@@ -112,16 +101,12 @@ const posts = (await getCollection("blog")).sort(
           to creating unique and innovative NFTs. We push the boundaries of digital art and
           technology to bring you extraordinary pieces. Our team, consisting solely of the two of
           us, is committed to delivering high-quality, captivating NFTs that resonate with
-          collectors. <a
-            class="tw-flex tw-items-center"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Go to opensea"
-            href="https://opensea.io/THE-INVINCIBLE/featured"
-          >
-            <span class="link"> our portofolio </span>
-            <Icon name="arrow-link" size={20} />
-          </a>
+          collectors.
+          <CustomLink
+            link={{ name: "our portofolio", url: "https://opensea.io/THE-INVINCIBLE/featured" }}
+            ariaLabel="Go to OpenSea"
+            newTab
+          />
         </p>
       </div>
       <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
@@ -160,10 +145,7 @@ const posts = (await getCollection("blog")).sort(
           ))
         }
       </div>
-      <a href="/blog" class="tw-flex tw-items-center tw-row-start-3">
-        <span class="link lg:tw-text-[19px]">see more blogs </span>
-        <Icon name="arrow-link" class="tw-ml-1" size={20} />
-      </a>
+      <CustomLink link={{ url: "/blog", name: "see more blogs" }} classWrapper="tw-row-start-3" />
     </section>
   </main>
   <Footer />
