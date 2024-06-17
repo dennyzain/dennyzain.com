@@ -14,8 +14,8 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<BaseLayout>
-  <Header title={SITE_TITLE} />
+<BaseLayout title={SITE_TITLE}>
+  <Header />
   <main>
     <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
       <div class="tw-relative tw-h-24 tw-w-24 tw-self-end">
@@ -70,14 +70,18 @@ const posts = (await getCollection("blog")).sort(
         About
       </h1>
       <p
-        class="tw-leading-7 lg:tw-leading-9 lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[23px]"
+        class="tw-leading-7 lg:tw-leading-9 lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[19px]"
       >
-        You can call me Denny, a passionate software developer with a strong focus on frontend
-        development and sometimes i'm also <b>fullstack developer</b>. Crafting seamless user
-        experiences and translating designs into elegant code is where my expertise truly shines.
-        With an insatiable curiosity and a knack for problem-solving, I'm driven to create
-        innovative solutions that resonate with users on a profound level.
+        You can call me Denny, a software developer passionate about frontend development, though I
+        sometimes take on fullstack projects too. I thrive on creating smooth user experiences and
+        translating designs into clean, functional code. I'm always curious and love solving
+        problems, which helps me develop great solutions that users love. As a lifelong learner, I'm
+        always exploring new technologies to keep my skills sharp and my work top-notch.
       </p>
+      <CustomLink
+        link={{ name: "learn more about me", url: "/about" }}
+        classWrapper="lg:tw-row-start-3 lg:tw-col-start-1"
+      />
     </section>
     <section
       class="tw-mt-4 tw-grid tw-grid-cols-1 tw-grid-rows-[50px_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5 lg:tw-mt-14"
@@ -102,12 +106,12 @@ const posts = (await getCollection("blog")).sort(
           technology to bring you extraordinary pieces. Our team, consisting solely of the two of
           us, is committed to delivering high-quality, captivating NFTs that resonate with
           collectors.
-          <CustomLink
-            link={{ name: "our portofolio", url: "https://opensea.io/THE-INVINCIBLE/featured" }}
-            ariaLabel="Go to OpenSea"
-            newTab
-          />
         </p>
+        <CustomLink
+          link={{ name: "our portofolio", url: "https://opensea.io/THE-INVINCIBLE/featured" }}
+          ariaLabel="Go to OpenSea"
+          newTab
+        />
       </div>
       <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
         <h2 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
@@ -145,7 +149,7 @@ const posts = (await getCollection("blog")).sort(
           ))
         }
       </div>
-      <CustomLink link={{ url: "/blog", name: "see more blogs" }} classWrapper="tw-row-start-3" />
+      <CustomLink link={{ url: "/blog", name: "read more" }} classWrapper="tw-row-start-3" />
     </section>
   </main>
   <Footer />
