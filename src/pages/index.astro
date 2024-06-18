@@ -1,6 +1,4 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { Icon } from "astro-icon/components";
 import { SITE_TITLE } from "../consts";
 import { getCollection } from "astro:content";
@@ -15,7 +13,6 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout title={SITE_TITLE}>
-  <Header />
   <main>
     <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
       <div class="tw-relative tw-h-24 tw-w-24 tw-self-end">
@@ -152,7 +149,6 @@ const posts = (await getCollection("blog")).sort(
       <CustomLink link={{ url: "/blog", name: "read more" }} classWrapper="tw-row-start-3" />
     </section>
   </main>
-  <Footer />
   <script>
     import "../scripts/main";
   </script>

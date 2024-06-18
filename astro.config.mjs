@@ -3,7 +3,10 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import tailwind from "@astrojs/tailwind";
-import embeds from "astro-embed/integration"
+import embeds from "astro-embed/integration";
+import rehypePrettyCode from "rehype-pretty-code";
+import moonlightTheme from "./src/assets/themes/moonlight.json";
+import { transformerCopyButton } from "@rehype-pretty/transformers";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,15 +19,24 @@ export default defineConfig({
     embeds(),
     mdx(),
     sitemap(),
-    tailwind(),
+    tailwind({ applyBaseStyles: true }),
     icon({ iconDir: "src/assets/icons" }),
   ],
   markdown: {
-    shikiConfig: {
-      theme: "one-dark-pro",
-      langs: [],
-      wrap: true,
-      transformers: [],
-    },
+    syntaxHighlight: false,
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: moonlightTheme,
+          transformers: [
+            transformerCopyButton({
+              visibility: "hover",
+              feedbackDuration: 2_500,
+            }),
+          ],
+        },
+      ],
+    ],
   },
 });

@@ -1,6 +1,4 @@
 ---
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
 import { getCollection } from "astro:content";
 import CardBlog from "../../components/CardBlog.astro";
 import SplitText from "../../components/SplitText.astro";
@@ -12,7 +10,6 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout>
-  <Header />
   <main class="tw-mt-14">
     <h1 class="tw-font-monumentBold tw-text-[32px]">
       <SplitText title="Blog" letterClass="tw-py-2" />
@@ -31,5 +28,4 @@ const posts = (await getCollection("blog")).sort(
       </ul>
     </section>
   </main>
-  <Footer />
 </BaseLayout>

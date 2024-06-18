@@ -1,7 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 import SplitText from "../components/SplitText.astro";
 import { SITE_TITLE } from "../consts";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -31,20 +29,22 @@ const techStack = [
 ---
 
 <BaseLayout title={`About | ${SITE_TITLE}`}>
-  <Header />
   <main class="tw-mt-16">
     <section class="tw-mb-5">
       <SplitText
         title="Denny Abbas Zain"
         letterClass="tw-font-monumentBold tw-text-[22px] lg:tw-text-[35px] lg:tw-py-1"
+        containerClass="tw-justify-center md:tw-mb-6"
       />
-      <div class="tw-grid tw-grid-cols-1 tw-gap-1 lg:tw-grid-cols-[1fr_2fr] lg:tw-gap-5">
+      <div class="tw-grid tw-grid-cols-1 tw-gap-1 lg:tw-grid-cols-[1fr_1fr] lg:tw-gap-5">
         <Image
           src={picOfAuthor}
           alt="Denny Abbas Zain"
-          class="tw-h-[300px] tw-w-full tw-rounded-lg tw-object-cover tw-object-top tw-mx-auto lg:tw-h-[300px] lg:tw-w-[300px]"
+          class="tw-h-[200px] tw-w-[200px] tw-my-4 tw-object-cover tw-object-top tw-rounded-full tw-mx-auto md:tw-h-[300px] md:tw-w-[300px] md:tw-col-start-2 md:tw-rounded-lg md:tw-my-0"
         />
-        <div class="tw-start-2 tw-text-[16px] lg:tw-text-[18px]">
+        <div
+          class="tw-start-2 tw-text-[16px] md:tw-col-start-1 md:tw-row-start-1 lg:tw-text-[18px]"
+        >
           <span class="tw-font-medium">SDE | Lifelong Learner | Linux Enthusiasts</span>
           <p>✦ working as frontend developer</p>
           <p>✦ currently learning web3, blockchain, and math</p>
@@ -85,5 +85,4 @@ const techStack = [
       </ul>
     </section>
   </main>
-  <Footer />
 </BaseLayout>
