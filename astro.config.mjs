@@ -19,7 +19,7 @@ export default defineConfig({
     embeds(),
     mdx(),
     sitemap(),
-    tailwind({ applyBaseStyles: true }),
+    tailwind(),
     icon({ iconDir: "src/assets/icons" }),
   ],
   markdown: {

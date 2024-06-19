@@ -63,15 +63,6 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
 
-.article > h1,
-.article > h2,
-.article > h3,
-.article > h4,
-.article > h5,
-.article > h6 {
-  @apply tw-mt-6 tw-mb-4 tw-font-semibold;
-}
-
 .link {
   background: linear-gradient(to right, black, black);
   background-size: 0 0.2em;
