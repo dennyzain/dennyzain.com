@@ -2,6 +2,13 @@
     <img src="https://github.com/dennyzain/denny-abbas-zain/blob/b82a4c360d37f7d5cefa1ef3c61dc6cd2c410ed0/public/mstile-150x150.png?raw=true" width="150" height="150">
 </div>
 
+<div align="center">
+  <video width="600" controls autoplay muted>
+    <source src="https://res.cloudinary.com/dennyaz/video/upload/v1718869310/assets-denny-zain-web/readme.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
 ## 🧑‍💻 About
 
 Hello, this is my personal website and blog made using astro.
