@@ -41,6 +41,10 @@ pre [data-line] {
   padding: 0 1rem;
 }
 
+blockquote {
+  @apply tw-bg-purple-400 tw-bg-opacity-10;
+}
+
 code {
   counter-reset: line;
 }

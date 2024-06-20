@@ -38,7 +38,7 @@ export default {
             "--tw-prose-bullets": theme("colors.purple[400]"),
             "--tw-prose-hr": theme("colors.gray[300]"),
             "--tw-prose-quotes": theme("colors.gray[900]"),
-            "--tw-prose-quote-borders": theme("colors.purple[300]"),
+            "--tw-prose-quote-borders": theme("colors.purple[400]"),
             "--tw-prose-captions": theme("colors.purple[700]"),
             "--tw-prose-code": theme("colors.purple[600]"),
             "--tw-prose-pre-code": theme("colors.gray[100]"),
