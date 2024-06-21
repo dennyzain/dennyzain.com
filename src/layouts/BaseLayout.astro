@@ -4,6 +4,7 @@ import Cursor from "../components/Cursor.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Umami from "../libs/Umami.astro";
 
 type Props = {
   title?: string;
@@ -17,6 +18,7 @@ const { title, description } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title || SITE_TITLE} description={description || SITE_DESCRIPTION} />
+    <Umami />
   </head>
   <body>
     <Header />
