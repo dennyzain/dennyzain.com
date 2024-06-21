@@ -1,11 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE } from "@/consts";
 import { getCollection } from "astro:content";
-import CardBlog from "../components/CardBlog.astro";
-import SplitText from "../components/SplitText.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import CustomLink from "../components/CustomLink.astro";
+import CardBlog from "@/components/CardBlog.astro";
+import SplitText from "@/components/SplitText.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CustomLink from "@/components/CustomLink.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
