@@ -2,9 +2,7 @@
     <img src="https://github.com/dennyzain/denny-abbas-zain/blob/b82a4c360d37f7d5cefa1ef3c61dc6cd2c410ed0/public/mstile-150x150.png?raw=true" width="150" height="150">
 </div>
 
-
 https://github.com/dennyzain/denny-abbas-zain/assets/55909019/4c1f33da-01bc-4016-a940-743bc4506270
-
 
 ## 🧑‍💻 About
 
