@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 import embeds from "astro-embed/integration";
 import rehypePrettyCode from "rehype-pretty-code";
 import moonlightTheme from "./src/assets/themes/moonlight.json";
-import { transformerCopyButton } from "@rehype-pretty/transformers";
+// import { transformerCopyButton } from "@rehype-pretty/transformers";
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,10 +30,10 @@ export default defineConfig({
         {
           theme: moonlightTheme,
           transformers: [
-            transformerCopyButton({
-              visibility: "hover",
-              feedbackDuration: 2_500,
-            }),
+            // transformerCopyButton({
+            //   visibility: "hover",
+            //   feedbackDuration: 2_500,
+            // }),
           ],
         },
       ],
