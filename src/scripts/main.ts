@@ -13,47 +13,51 @@ toContactEl.addEventListener("click", () => {
   });
 });
 
-gsap.set("text.circles__text", { transformOrigin: "50% 50%" });
-gsap.to("text.circles__text", {
-  duration: 12,
-  ease: "none",
-  rotation: "+=360",
-  repeat: -1,
+window.addEventListener("load", () => {
+  gsap.set("text.circles__text", { transformOrigin: "50% 50%" });
+  gsap.to("text.circles__text", {
+    duration: 12,
+    ease: "none",
+    rotation: "+=360",
+    repeat: -1,
+  });
+  const tl = gsap.timeline({
+    delay: 1.5,
+  });
+
+  tl.from(
+    ".o1",
+    {
+      duration: 2,
+      skewX: -30,
+      yPercent: 100,
+      xPercent: 50,
+      ease: "power4",
+      stagger: 0.1,
+      blur: 10,
+    },
+    "<0.25",
+  );
+
+  tl.fromTo(
+    ".o2",
+    {
+      skewX: 0,
+      opacity: 0,
+      yPercent: 100,
+      xPercent: 50,
+      blur: 10,
+    },
+    {
+      skewX: -25,
+      opacity: 1,
+      yPercent: 0,
+      xPercent: 0,
+      ease: "power4",
+      stagger: 0.1,
+      blur: 0,
+      duration: 2,
+    },
+    "<0.25",
+  );
 });
-const tl = gsap.timeline({});
-
-tl.from(
-  ".o1",
-  {
-    duration: 2,
-    skewX: -30,
-    yPercent: 100,
-    xPercent: 50,
-    ease: "power4",
-    stagger: 0.1,
-    blur: 10,
-  },
-  "<0.25",
-);
-
-tl.fromTo(
-  ".o2",
-  {
-    skewX: 0,
-    opacity: 0,
-    yPercent: 100,
-    xPercent: 50,
-    blur: 10,
-  },
-  {
-    skewX: -25,
-    opacity: 1,
-    yPercent: 0,
-    xPercent: 0,
-    ease: "power4",
-    stagger: 0.1,
-    blur: 0,
-    duration: 2,
-  },
-  "<0.25",
-);

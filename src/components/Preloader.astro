@@ -1,0 +1,108 @@
+---
+
+---
+
+<style>
+  .preloader {
+    perspective: 1000px;
+    z-index: 9999999999999;
+  }
+  .text-logo {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+  }
+  .cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  .face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+  }
+  .front {
+    transform: translateZ(50px);
+  }
+  .back {
+    transform: rotateX(-90deg) translateZ(50px);
+  }
+  .right {
+    transform: rotateY(90deg) translateZ(50px);
+  }
+  .left {
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+  .top {
+    transform: rotateX(90deg) translateZ(50px);
+  }
+  .bottom {
+    transform: rotateY(180deg) translateZ(50px);
+  }
+</style>
+
+<section
+  class="tw-flex tw-justify-center tw-flex-col tw-items-center tw-h-screen tw-bg-black tw-m-0 tw-top-0 tw-fixed tw-w-screen tw-left-0 preloader"
+>
+  <div class="cube">
+    <div class="face front tw-font-monumentBold">
+      <span
+        id="logo"
+        class="text-logo tw-cursor-pointer tw-font-monumentBold tw-text-[36px] tw-text-black tw-self-center tw-tracking-[-8.64px] lg:tw-text-[40px]"
+      >
+        DZ
+      </span>
+    </div>
+    <div class="face back">:(</div>
+    <div class="face right">:)</div>
+    <div class="face left">:)</div>
+    <div class="face top">:)</div>
+    <div class="face bottom">:)</div>
+  </div>
+  <span class="tw-text-white tw-font-monumentBold tw-mt-6">Loading</span>
+</section>
+<script>
+  import gsap from "gsap";
+  const preloader = document.querySelector(".preloader") as HTMLElement;
+  const cube = document.querySelector(".cube");
+  const loader = gsap.timeline({});
+
+  loader
+    .from(cube, {
+      y: -300,
+      rotationY: 360,
+      rotationX: 360,
+      duration: 1,
+    })
+    .to(cube, {
+      rotationY: 360,
+      rotationX: 360,
+      y: 0,
+      duration: 2,
+      ease: "power2.inOut",
+      repeat: -1,
+    });
+  window.addEventListener("load", () => {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        preloader.classList.add("tw-hidden");
+        loader.kill();
+      },
+      delay: 1.5,
+      autoRemoveChildren: true,
+    });
+    tl.to(".preloader", {
+      scale: 20,
+      opacity: 0,
+      duration: 0.7,
+      ease: "expo.in",
+    });
+  });
+</script>
