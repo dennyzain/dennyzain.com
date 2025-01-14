@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import CardBlog from "@/components/CardBlog.astro";
 import SplitText from "@/components/SplitText.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import CardProject from "@/components/CardProject.astro";
 
-const posts = (await getCollection("blog")).sort(
+const projects = (await getCollection("project")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -12,15 +12,15 @@ const posts = (await getCollection("blog")).sort(
 <BaseLayout>
   <main class="tw-mt-14">
     <h1 class="tw-font-monumentBold tw-text-[32px]">
-      <SplitText title="Blogs" letterClass="tw-py-2" />
+      <SplitText title="Projects" letterClass="tw-py-2" />
     </h1>
     <section>
-      <ul>
+      <ul class="tw-grid tw-grid-cols-1 tw-gap-3 lg:tw-grid-cols-2">
         {
-          posts.map((post) => (
+          projects.map((project) => (
             <li>
-              <a href={`/blog/${post.slug}/`}>
-                <CardBlog {...post.data} />
+              <a href={`/project/${project.slug}/`}>
+                <CardProject {...project.data} />
               </a>
             </li>
           ))

@@ -6,23 +6,34 @@ import CardBlog from "@/components/CardBlog.astro";
 import SplitText from "@/components/SplitText.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import CustomLink from "@/components/CustomLink.astro";
+import CardProject from "@/components/CardProject.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const projects = (await getCollection("project")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
 <BaseLayout title={SITE_TITLE}>
   <main>
-    <section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
+    <section
+      class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden"
+    >
       <div class="tw-relative tw-h-24 tw-w-24 tw-self-end">
-        <div class="tw-absolute o2 tw-bottom-4 tw-right-0 lg:tw-bottom-4 lg:tw-right-5">
+        <div
+          class="tw-absolute o2 tw-bottom-4 tw-right-0 lg:tw-bottom-4 lg:tw-right-5"
+        >
           <svg
             class="tw-w-[130px] tw-h-[130px] lg:tw-w-[170px] lg:tw-h-[170px]"
             viewBox="0 0 200 200"
           >
             <def>
-              <path id="circle-3" d="M50,100A50,50 0 1 1 150,100A50,50 0 1 1 50,100"></path>
+              <path
+                id="circle-3"
+                d="M50,100A50,50 0 1 1 150,100A50,50 0 1 1 50,100"></path>
             </def>
             <text
               class="circles__text tw-text-black tw-text-[16px] tw-uppercase tw-origin-[100px_100px] tw-will-change-[transform_opacity] lg:tw-text-[17px]"
@@ -48,10 +59,17 @@ const posts = (await getCollection("blog")).sort(
         />
       </h1>
       <div class="tw-self-end tw-mt-5">
-        <button id="scroll-down" class="o1 tw-text-[20px] tw-font-monument link lg:tw-text-[33px]">
+        <button
+          id="scroll-down"
+          class="o1 tw-text-[20px] tw-font-monument link lg:tw-text-[33px]"
+        >
           Let’s connect
         </button>
-        <Icon name="arrow-link" size={30} class={"tw-inline-block tw-animate-bounce"} />
+        <Icon
+          name="arrow-link"
+          size={30}
+          class={"tw-inline-block tw-animate-bounce"}
+        />
       </div>
       <p
         class="o1 tw-text-[15px] tw-text-center tw-mt-10 -tw-bottom-24 tw-relative lg:tw-text-[20px]"
@@ -59,7 +77,10 @@ const posts = (await getCollection("blog")).sort(
         scroll down <Icon name="scroll" size={30} class={"tw-inline-block"} />
       </p>
     </section>
-    <section id="about" class="tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr]">
+    <section
+      id="about"
+      class="tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr]"
+    >
       <h1
         id="hover-special"
         class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] lg:tw-col-start-1 tw-self-center"
@@ -69,11 +90,12 @@ const posts = (await getCollection("blog")).sort(
       <p
         class="tw-leading-7 lg:tw-leading-9 lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[19px]"
       >
-        A software engineer with 3 years of experience, i'm passionate for developing web
-        applications. I thrive on creating smooth user experiences and translating designs into
-        clean, functional code. I'm always curious and love solving problems, which helps me develop
-        great solutions that users love. As a lifelong learner, I'm always exploring new
-        technologies to keep my skills sharp and my work top-notch.
+        A software engineer with 3 years of experience, i'm passionate for
+        developing web applications. I thrive on creating smooth user
+        experiences and translating designs into clean, functional code. I'm
+        always curious and love solving problems, which helps me develop great
+        solutions that users love. As a lifelong learner, I'm always exploring
+        new technologies to keep my skills sharp and my work top-notch.
       </p>
       <CustomLink
         link={{ name: "learn more about me", url: "/about" }}
@@ -90,7 +112,9 @@ const posts = (await getCollection("blog")).sort(
         Experience
       </h1>
       <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
-        <h2 class="tw-font-geist tw-font-black lg:tw-text-[26px]">The Invincible</h2>
+        <h2 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
+          The Invincible
+        </h2>
         <h3
           class="tw-font-geist tw-font-semibold tw-flex tw-justify-between tw-text-[16px] lg:tw-text-[26px]"
         >
@@ -98,11 +122,12 @@ const posts = (await getCollection("blog")).sort(
           <span class="tw-mr-3">2021 - 2022</span>
         </h3>
         <p class="tw-leading-7 lg:tw-text-[19px] lg:tw-leading-9">
-          Together with my partner, I’m the creator of "The Invincible," an organization dedicated
-          to creating unique and innovative NFTs. We push the boundaries of digital art and
-          technology to bring you extraordinary pieces. Our team, consisting solely of the two of
-          us, is committed to delivering high-quality, captivating NFTs that resonate with
-          collectors.
+          Together with my partner, I’m the creator of "The Invincible," an
+          organization dedicated to creating unique and innovative NFTs. We push
+          the boundaries of digital art and technology to bring you
+          extraordinary pieces. Our team, consisting solely of the two of us, is
+          committed to delivering high-quality, captivating NFTs that resonate
+          with collectors.
         </p>
         <CustomLink
           link={{
@@ -124,12 +149,36 @@ const posts = (await getCollection("blog")).sort(
           <span class="tw-mr-3">2022 - Present</span>
         </h3>
         <p class="tw-leading-7 lg:tw-text-[19px] lg:tw-leading-9">
-          This was where my journey began as a professional developer. There, I worked on many
-          projects in website development. I started off as a frontend developer, then attempted to
-          create a unified codebase for the web. The majority of the websites were created with
-          React.js (CRA) and later migrated to Next.js.
+          This was where my journey began as a professional developer. There, I
+          worked on many projects in website development. I started off as a
+          frontend developer, then attempted to create a unified codebase for
+          the web. The majority of the websites were created with React.js (CRA)
+          and later migrated to Next.js.
         </p>
       </div>
+    </section>
+    <section class="tw-mt-4 lg:tw-mt-14">
+      <h1
+        id="hover-special"
+        class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] tw-self-center"
+      >
+        Featured Projects
+      </h1>
+      <div
+        class="tw-flex tw-flex-row tw-space-x-3 tw-my-2 tw-w-full lg:flex-wrap"
+      >
+        {
+          projects.slice(0, 2).map((project) => (
+            <a class="tw-inline-block" href={`/project/${project.slug}/`}>
+              <CardProject {...project.data} />
+            </a>
+          ))
+        }
+      </div>
+      <CustomLink
+        link={{ url: "/project", name: "see more projects" }}
+        ariaLabel="detail more projects"
+      />
     </section>
     <section
       id="blog"

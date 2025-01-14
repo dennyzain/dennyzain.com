@@ -1,0 +1,21 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import ImageCloud from "@/components/ImageCloud.astro";
+import ProjectBrief from "@/layouts/ProjectBrief.astro";
+
+export async function getStaticPaths() {
+  const project = await getCollection("project");
+  return project.map((project) => ({
+    params: { slug: project.slug },
+    props: project,
+  }));
+}
+type Props = CollectionEntry<"project">;
+const components = { ImageCloud };
+const project = Astro.props;
+const { Content } = await project.render();
+---
+
+<ProjectBrief {...project.data}>
+  <Content components={components} />
+</ProjectBrief>

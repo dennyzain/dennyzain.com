@@ -1,0 +1,31 @@
+---
+import ImageCloud from "./ImageCloud.astro";
+const { title, description, tags, thumbnail } = Astro.props;
+console.log(thumbnail);
+---
+
+<div
+  class="tw-flex tw-flex-col tw-w-[200px] tw-overflow-hidden tw-py-3 tw-px-2 lg:tw-w-[300px]"
+>
+  <ImageCloud
+    classWrapper="tw-overflow-hidden tw-h-[100px] tw-z-10  tw-shadow-xl lg:tw-min-h-[150px] xl:tw-min-h-[190px]"
+    classImg="tw-object-cover tw-h-[100px] tw-w-full -tw-z-10 hover:tw-scale-105 tw-transition-transform lg:tw-min-h-[150px] xl:tw-min-h-[190px]"
+    width={600}
+    height={100}
+    quality={100}
+    publicId={thumbnail}
+    alt="A thumbnail of the project"
+  />
+  <h1 class="tw-font-semibold tw-pt-2 tw-text-[15px] lg:tw-text-[20px]">
+    {title}
+  </h1>
+  <div class="tw-space-x-1 tw-pt-2 tw-flex tw-flex-row tw-py-2">
+    {
+      tags?.map((tag: string) => (
+        <span class="tw-bg-black tw-text-white tw-text-[12px] tw-justify-center tw-text-center tw-rounded-xl tw-box-border tw-px-[8px] tw-py-[5px] tw-min-w-10 lg:tw-text-[14px] lg:tw-p-[5px]">
+          {tag}
+        </span>
+      ))
+    }
+  </div>
+</div>

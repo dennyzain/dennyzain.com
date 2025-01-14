@@ -12,9 +12,19 @@ interface Props {
   classImg?: string;
   classWrapper?: string;
   alt?: string;
+  quality?: number;
 }
 
-const { publicId, width, height, authorOfImg, alt, classImg, classWrapper } = Astro.props;
+const {
+  publicId,
+  width,
+  height,
+  authorOfImg,
+  alt,
+  classImg,
+  classWrapper,
+  quality,
+} = Astro.props;
 
 const cld = new Cloudinary({
   cloud: {
@@ -32,6 +42,7 @@ const imgResize = image.resize(fill());
     height={height}
     alt={alt ?? "image"}
     class:list={["tw-self-center", classImg]}
+    quality={quality ?? 80}
   />
   {
     authorOfImg && (

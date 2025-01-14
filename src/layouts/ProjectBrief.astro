@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import SplitText from "@/components/SplitText.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import Giscus from "@/libs/Giscus.astro";
+import BaseLayout from "./BaseLayout.astro";
+import ImageCloud from "@/components/ImageCloud.astro";
+
+type Props = CollectionEntry<"project">["data"];
+
+const { title, description, pubDate, thumbnail, tags, link } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="tw-mt-14 lg:tw-mt-20">
+    <article class="tw-mb-2">
+      <h1 class="tw-font-monument tw-text-2xl">
+        <SplitText
+          title={title}
+          letterClass="lg:tw-text-[45px] lg:tw-py-3 lg:tw-ml-2"
+        />
+      </h1>
+      <div>
+        {
+          thumbnail && (
+            <ImageCloud
+              classImg="tw-rounded-2xl tw-object-cover tw-h-[200px] lg:tw-h-[350px]"
+              width={1020}
+              height={405}
+              publicId={thumbnail}
+              alt="A thumbnail of the article"
+            />
+          )
+        }
+      </div>
+      <hr class="tw-my-5 lg:tw-my-7" />
+      <section
+        class="tw-prose-favorite tw-prose md:prose-lg lg:prose-xl tw-text-[16px] tw-leading-7 lg:tw-text-[19px] lg:tw-leading-10"
+      >
+        <slot />
+      </section>
+      <div class="tw-space-x-1">
+        {
+          tags &&
+            tags.map((tag: string) => (
+              <span class="tw-inline-block tw-mt-5 tw-bg-black tw-text-white tw-text-xs tw-text-center tw-rounded-xl tw-box-border tw-p-[5px] tw-min-w-10">
+                {tag}
+              </span>
+            ))
+        }
+      </div>
+    </article>
+    <Giscus />
+  </main>
+</BaseLayout>
