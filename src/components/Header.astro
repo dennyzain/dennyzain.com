@@ -13,7 +13,9 @@ import { Icon } from "astro-icon/components";
   <nav
     class="tw-flex tw-items-center tw-fixed tw-mix-blend-difference tw-top-0 tw-left-0 tw-w-full tw-px-[17px] tw-z-10"
   >
-    <div class="tw-flex tw-justify-between tw-w-full lg:tw-w-[55%] lg:tw-mx-auto">
+    <div
+      class="tw-flex tw-justify-between tw-w-full lg:tw-w-[55%] lg:tw-mx-auto"
+    >
       <span
         id="logo"
         class="text-logo tw-cursor-pointer tw-font-monumentBold tw-text-[36px] tw-text-white tw-self-center tw-tracking-[-8.64px] lg:tw-text-[40px]"
@@ -24,7 +26,9 @@ import { Icon } from "astro-icon/components";
         class="tw-bg-white tw-flex tw-justify-center tw-items-center tw-p-2 tw-w-[40px] tw-min-h-[32px] tw-self-center tw-rounded-full
         lg:tw-min-w-[44px] lg:tw-min-h-[44px] tw-font-monument"
       >
-        <span id="date" class="tw-text-black tw-text-[16px] tw-animate-fade-in lg:tw-text-[18px]"
+        <span
+          id="date"
+          class="tw-text-black tw-text-[16px] tw-animate-fade-in lg:tw-text-[18px]"
           >:)</span
         >
       </div>
@@ -34,16 +38,25 @@ import { Icon } from "astro-icon/components";
     id="sound"
     class="tw-fixed -tw-left-6 tw-bottom-16 lg:tw-left-[21%] tw-mix-blend-difference"
   >
-    <div class="tw-text-[18px] -tw-rotate-90 lg:tw-text-[20px] lg:tw-font-medium tw-bg-black">
+    <div
+      class="tw-text-[18px] -tw-rotate-90 lg:tw-text-[20px] lg:tw-font-medium tw-bg-black"
+    >
       <span class="tw-text-white"> sound</span>
       <span id="sound-off" class="tw-text-white tw-animate-fade-in">off</span>
-      <span id="sound-on" class="tw-text-white tw-animate-fade-in tw-hidden">on</span>
+      <span id="sound-on" class="tw-text-white tw-animate-fade-in tw-hidden"
+        >on</span
+      >
     </div>
   </section>
   <section
     class="tw-fixed tw-right-5 tw-bottom-16 tw-z-[999] lg:tw-right-[23%] lg:tw-flex lg:tw-flex-col tw-mix-blend-difference"
   >
-    <button type="button" aria-label="Open Navigation" id="btn-nav-open" class="lg:tw-hidden">
+    <button
+      type="button"
+      aria-label="Open Navigation"
+      id="btn-nav-open"
+      class="lg:tw-hidden"
+    >
       <Icon name="nav" size={50} />
     </button>
     <a href="/" aria-label="Go to Bio">
@@ -74,9 +87,13 @@ import { Icon } from "astro-icon/components";
     >
       <HeaderLink class="link-item" href="/">Bio</HeaderLink>
       <HeaderLink class="link-item" href="/blog">Blog</HeaderLink>
+      <HeaderLink class="link-item" href="/project">Projects</HeaderLink>
       <span id="to-contact" class="link-item">Contact</span>
     </div>
-    <button id="btn-nav-close" class="tw-fixed tw-z-10 tw-mb-1 tw-right-5 tw-bottom-16">
+    <button
+      id="btn-nav-close"
+      class="tw-fixed tw-z-10 tw-mb-1 tw-right-5 tw-bottom-16"
+    >
       <Icon name="nav" size={50} class="tw-text-black" />
     </button>
   </nav>
