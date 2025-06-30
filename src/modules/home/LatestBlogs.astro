@@ -1,0 +1,28 @@
+---
+import CardBlog from "@/components/CardBlog.astro";
+import CustomLink from "@/components/CustomLink.astro";
+const { posts } = Astro.props;
+---
+
+<section
+  id="blog"
+  class="tw-min-h-fit tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_auto_.2fr]"
+>
+  <h1 class="tw-font-monumentBold tw-self-center tw-text-[32px] tw-row-start-1 lg:tw-text-[35px]">
+    Latest blogs
+  </h1>
+  <div class="tw-row-start-2 lg:tw-space-y-5">
+    {
+      posts.slice(0, 3).map((post: any) => (
+        <a class="tw-inline-block" href={`/blog/${post.slug}/`}>
+          <CardBlog {...post.data} />
+        </a>
+      ))
+    }
+  </div>
+  <CustomLink
+    link={{ url: "/blog", name: "see more blogs" }}
+    ariaLabel="detail more blogs"
+    classWrapper="tw-row-start-3"
+  />
+</section>

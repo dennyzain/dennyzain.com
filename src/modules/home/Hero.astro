@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+import SplitText from "@/components/SplitText.astro";
+---
+
+<section class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden">
+  <div class="tw-relative tw-h-24 tw-w-24 tw-self-end">
+    <div class="tw-absolute o2 tw-bottom-4 tw-right-0 lg:tw-bottom-4 lg:tw-right-5">
+      <svg class="tw-w-[130px] tw-h-[130px] lg:tw-w-[170px] lg:tw-h-[170px]" viewBox="0 0 200 200">
+        <def>
+          <path id="circle-3" d="M50,100A50,50 0 1 1 150,100A50,50 0 1 1 50,100"></path>
+        </def>
+        <text
+          class="circles__text tw-text-black tw-text-[16px] tw-uppercase tw-origin-[100px_100px] tw-will-change-[transform_opacity] lg:tw-text-[17px]"
+        >
+          <textPath
+            class="circles__text-path"
+            xlink:href="#circle-3"
+            aria-label=""
+            textLength="300"
+          >
+            available for work
+          </textPath>
+        </text>
+      </svg>
+    </div>
+  </div>
+  <h1
+    class="tw-text-black tw-font-monumentBold tw-tracking-wide tw-max-w-[300px] md:tw-max-w-[420px]"
+  >
+    <SplitText
+      title="Hi there, I'm Denny Abbas Zain a multidisciplinary developer"
+      letterClass="tw-text-[24px] md:tw-text-[32px] lg:tw-text-[45px] lg:tw-py-3 lg:tw-my-2 lg:!tw-mr-5"
+    />
+  </h1>
+  <div class="tw-self-end tw-mt-5">
+    <button id="scroll-down" class="o1 tw-text-[20px] tw-font-monument link lg:tw-text-[33px]">
+      Let's connect
+    </button>
+    <Icon name="arrow-link" size={30} class={"tw-inline-block tw-animate-bounce"} />
+  </div>
+  <p class="o1 tw-text-[15px] tw-text-center tw-mt-10 -tw-bottom-24 tw-relative lg:tw-text-[20px]">
+    scroll down <Icon name="scroll" size={30} class={"tw-inline-block"} />
+  </p>
+</section>

@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+import CardProject from "@/components/CardProject.astro";
+import CustomLink from "@/components/CustomLink.astro";
+type Props = {
+  projects: CollectionEntry<"project">[];
+};
+const { projects } = Astro.props;
+---
+
+<section class="tw-mt-4 lg:tw-mt-14">
+  <h1
+    id="hover-special"
+    class="tw-font-monumentBold tw-text-[32px]
+lg:tw-text-[35px] tw-self-center"
+  >
+    Featured Projects
+  </h1>
+  <div class="tw-flex tw-flex-row tw-space-x-3
+tw-my-2 tw-w-full lg:flex-wrap">
+    {
+      projects.slice(0, 2).map((project) => (
+        <a class="tw-inline-block" href={`/project/${project.slug}/`}>
+          {" "}
+          <CardProject {...project.data} />{" "}
+        </a>
+      ))
+    }
+  </div>
+  <CustomLink
+    link={{
+      url: "/project",
+      name: "see more projects",
+    }}
+    ariaLabel="detail more projects"
+  />
+</section>

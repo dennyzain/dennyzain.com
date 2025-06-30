@@ -1,207 +1,29 @@
 ---
-import { Icon } from "astro-icon/components";
 import { SITE_TITLE } from "@/consts";
 import { getCollection } from "astro:content";
-import CardBlog from "@/components/CardBlog.astro";
-import SplitText from "@/components/SplitText.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import CustomLink from "@/components/CustomLink.astro";
-import CardProject from "@/components/CardProject.astro";
+import Hero from "@/modules/home/Hero.astro";
+import About from "@/modules/home/About.astro";
+import Experience from "@/modules/home/Experience.astro";
+import FeaturedProjects from "@/modules/home/FeaturedProjects.astro";
+import LatestBlogs from "@/modules/home/LatestBlogs.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const projects = (await getCollection("project")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
 <BaseLayout title={SITE_TITLE}>
   <main>
-    <section
-      class="tw-h-screen tw-flex tw-flex-col tw-justify-center tw-overflow-hidden"
-    >
-      <div class="tw-relative tw-h-24 tw-w-24 tw-self-end">
-        <div
-          class="tw-absolute o2 tw-bottom-4 tw-right-0 lg:tw-bottom-4 lg:tw-right-5"
-        >
-          <svg
-            class="tw-w-[130px] tw-h-[130px] lg:tw-w-[170px] lg:tw-h-[170px]"
-            viewBox="0 0 200 200"
-          >
-            <def>
-              <path
-                id="circle-3"
-                d="M50,100A50,50 0 1 1 150,100A50,50 0 1 1 50,100"></path>
-            </def>
-            <text
-              class="circles__text tw-text-black tw-text-[16px] tw-uppercase tw-origin-[100px_100px] tw-will-change-[transform_opacity] lg:tw-text-[17px]"
-            >
-              <textPath
-                class="circles__text-path"
-                xlink:href="#circle-3"
-                aria-label=""
-                textLength="300"
-              >
-                available for work
-              </textPath>
-            </text>
-          </svg>
-        </div>
-      </div>
-      <h1
-        class="tw-text-black tw-font-monumentBold tw-tracking-wide tw-max-w-[300px] md:tw-max-w-[420px]"
-      >
-        <SplitText
-          title="Hi there, I’m Denny Abbas Zain a multidisciplinary developer"
-          letterClass="tw-text-[24px] md:tw-text-[32px] lg:tw-text-[45px] lg:tw-py-3 lg:tw-my-2 lg:!tw-mr-5"
-        />
-      </h1>
-      <div class="tw-self-end tw-mt-5">
-        <button
-          id="scroll-down"
-          class="o1 tw-text-[20px] tw-font-monument link lg:tw-text-[33px]"
-        >
-          Let’s connect
-        </button>
-        <Icon
-          name="arrow-link"
-          size={30}
-          class={"tw-inline-block tw-animate-bounce"}
-        />
-      </div>
-      <p
-        class="o1 tw-text-[15px] tw-text-center tw-mt-10 -tw-bottom-24 tw-relative lg:tw-text-[20px]"
-      >
-        scroll down <Icon name="scroll" size={30} class={"tw-inline-block"} />
-      </p>
-    </section>
-    <section
-      id="about"
-      class="tw-grid tw-grid-cols-1 tw-gap-2 tw-grid-rows-[50px_.7fr]"
-    >
-      <h1
-        id="hover-special"
-        class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] lg:tw-col-start-1 tw-self-center"
-      >
-        About
-      </h1>
-      <p
-        class="tw-leading-7 lg:tw-leading-9 lg:tw-row-start-2 lg:tw-col-start-1 lg:tw-col-span-3 lg:tw-self-center lg:tw-text-[19px]"
-      >
-        Software engineer with 3+ years of experience building web applications
-        that drive business growth. I'm passionate about solving problems and
-        creating solutions that users love while delivering measurable value.
-        Always learning, always curious.
-      </p>
-      <CustomLink
-        link={{ name: "learn more about me", url: "/about" }}
-        classWrapper="lg:tw-row-start-3 lg:tw-col-start-1"
-      />
-    </section>
-    <section
-      class="tw-mt-4 tw-grid tw-grid-cols-1 tw-grid-rows-[50px_2fr] tw-gap-2 lg:tw-grid-cols-4 lg:tw-gap-5 lg:tw-mt-14"
-    >
-      <h1
-        id="hover-special"
-        class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] tw-self-center"
-      >
-        Experience
-      </h1>
-      <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
-        <h2 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
-          The Invincible
-        </h2>
-        <h3
-          class="tw-font-geist tw-font-semibold tw-flex tw-justify-between tw-text-[16px] lg:tw-text-[26px]"
-        >
-          <span>Co-Founder & NFT Creator</span>
-          <span class="tw-mr-3">2021 - 2022</span>
-        </h3>
-        <p class="tw-leading-7 lg:tw-text-[19px] lg:tw-leading-9">
-          Together with my partner, I’m the creator of "The Invincible," an
-          organization dedicated to creating unique and innovative NFTs. We push
-          the boundaries of digital art and technology to bring you
-          extraordinary pieces. Our team, consisting solely of the two of us, is
-          committed to delivering high-quality, captivating NFTs that resonate
-          with collectors.
-        </p>
-        <CustomLink
-          link={{
-            name: "our portofolio",
-            url: "https://opensea.io/THE-INVINCIBLE/featured",
-          }}
-          ariaLabel="Go to OpenSea"
-          newTab
-        />
-      </div>
-      <div class="lg:tw-space-y-3 lg:tw-col-start-1 lg:tw-col-span-4">
-        <h2 class="tw-font-geist tw-font-black lg:tw-text-[26px]">
-          Quadrant Synergy Internasional
-        </h2>
-        <h3
-          class="tw-font-geist tw-font-semibold tw-flex tw-justify-between tw-text-[16px] lg:tw-text-[26px]"
-        >
-          <span>Frontend Developer</span>
-          <span class="tw-mr-3">2022 - Present</span>
-        </h3>
-        <p class="tw-leading-7 lg:tw-text-[19px] lg:tw-leading-9">
-          This was where my journey began as a professional developer. There, I
-          worked on many projects in website development. I started off as a
-          frontend developer, then attempted to create a unified codebase for
-          the web. The majority of the websites were created with React.js (CRA)
-          and later migrated to Next.js.
-        </p>
-      </div>
-    </section>
-    <section class="tw-mt-4 lg:tw-mt-14">
-      <h1
-        id="hover-special"
-        class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[35px] tw-self-center"
-      >
-        Featured Projects
-      </h1>
-      <div
-        class="tw-flex tw-flex-row tw-space-x-3 tw-my-2 tw-w-full lg:flex-wrap"
-      >
-        {
-          projects.slice(0, 2).map((project) => (
-            <a class="tw-inline-block" href={`/project/${project.slug}/`}>
-              <CardProject {...project.data} />
-            </a>
-          ))
-        }
-      </div>
-      <CustomLink
-        link={{ url: "/project", name: "see more projects" }}
-        ariaLabel="detail more projects"
-      />
-    </section>
-    <section
-      id="blog"
-      class="tw-min-h-fit tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_auto_.2fr]"
-    >
-      <h1
-        class="tw-font-monumentBold tw-self-center tw-text-[32px] tw-row-start-1 lg:tw-text-[35px]"
-      >
-        Latest blogs
-      </h1>
-      <div class="tw-row-start-2 lg:tw-space-y-5">
-        {
-          posts.slice(0, 3).map((post) => (
-            <a class="tw-inline-block" href={`/blog/${post.slug}/`}>
-              <CardBlog {...post.data} />
-            </a>
-          ))
-        }
-      </div>
-      <CustomLink
-        link={{ url: "/blog", name: "see more blogs" }}
-        ariaLabel="detail more blogs"
-        classWrapper="tw-row-start-3"
-      />
-    </section>
+    <Hero />
+    <About />
+    <Experience />
+    <FeaturedProjects projects={projects} />
+    <LatestBlogs posts={posts} />
   </main>
   <script>
     import "../scripts/main";
