@@ -30,7 +30,7 @@ body {
 }
 
 body {
-  @apply tw-mx-auto xs:tw-max-w-[80%] md:tw-max-w-[75%] lg:tw-max-w-[50%];
+  @apply tw-mx-auto xs:tw-max-w-[80%] md:tw-max-w-[75%] lg:tw-max-w-[40%];
 }
 
 pre {

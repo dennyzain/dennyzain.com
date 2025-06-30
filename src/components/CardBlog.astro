@@ -9,15 +9,15 @@ const { title, pubDate, heroImage = "", tags, minRead, description } = Astro.pro
 ---
 
 <div class="tw-grid tw-grid-cols-[4fr_2fr] tw-grid-rows-[.2fr_auto_1fr] tw-gap-1 lg:tw-gap-2">
-  <div class="tw-text-[12px] lg:tw-text-[18px]">
+  <div class="tw-text-[12px] lg:tw-text-[16px]">
     <span>{minRead} min read</span> • <FormattedDate date={pubDate} />
   </div>
   <div class="tw-col-start-1 tw-row-start-2">
-    <h1 class="tw-font-bold tw-text-[20px] lg:tw-text-[25px]">{title}</h1>
+    <h1 class="tw-font-bold tw-text-[20px] lg:tw-text-[23px]">{title}</h1>
     <p class="tw-text-[14px] lg:tw-hidden">
       {description.length < 25 ? description : `${description.substring(0, 25)}...`}
     </p>
-    <p class="tw-hidden lg:tw-text-[18px] lg:tw-flex lg:tw-flex-wrap">
+    <p class="tw-hidden lg:tw-text-[16px] lg:tw-flex lg:tw-flex-wrap">
       {description.length < 50 ? description : `${description.substring(0, 150)}...`}
     </p>
   </div>

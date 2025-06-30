@@ -11,16 +11,16 @@ const { projects } = Astro.props;
 <section class="tw-mt-4 lg:tw-mt-14">
   <h1
     id="hover-special"
-    class="tw-font-monumentBold tw-text-[32px]
-lg:tw-text-[35px] tw-self-center"
+    class="tw-font-monumentBold tw-text-[32px] lg:tw-text-[30px] tw-self-center"
   >
     Featured Projects
   </h1>
-  <div class="tw-flex tw-flex-row tw-space-x-3
-tw-my-2 tw-w-full lg:flex-wrap">
+  <div
+    class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-2 tw-gap-3 tw-my-2 tw-w-full lg:tw-justify-items-start"
+  >
     {
       projects.slice(0, 2).map((project) => (
-        <a class="tw-inline-block" href={`/project/${project.slug}/`}>
+        <a class="tw-block lg:tw-w-[90%]" href={`/project/${project.slug}/`}>
           {" "}
           <CardProject {...project.data} />{" "}
         </a>
@@ -33,5 +33,6 @@ tw-my-2 tw-w-full lg:flex-wrap">
       name: "see more projects",
     }}
     ariaLabel="detail more projects"
+    classText="lg:tw-text-[16px]"
   />
 </section>

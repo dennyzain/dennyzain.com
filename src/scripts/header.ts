@@ -18,6 +18,14 @@ const allLinksNav = document.querySelectorAll(".link-item");
 const logoEl = document.querySelector("#logo") as HTMLButtonElement;
 const btnContactNavs = document.querySelectorAll("#to-contact") as NodeList;
 
+// Audio persistence functionality
+const AUDIO_STATE_KEY = "audio-state";
+const AUDIO_TIME_KEY = "audio-time";
+
+interface AudioState {
+  isPlaying: boolean;
+}
+
 interface PropsType {
   progress: number;
   limit: number;
@@ -131,6 +139,111 @@ allLinksNav.forEach((link) => {
   });
 });
 
+// Save audio state to localStorage
+function saveAudioState() {
+  const state: AudioState = {
+    isPlaying: !audio.paused,
+  };
+  localStorage.setItem(AUDIO_STATE_KEY, JSON.stringify(state));
+  localStorage.setItem(AUDIO_TIME_KEY, audio.currentTime.toString());
+}
+
+// Restore audio state from localStorage
+function restoreAudioState() {
+  const savedState = localStorage.getItem(AUDIO_STATE_KEY);
+  const savedTime = localStorage.getItem(AUDIO_TIME_KEY);
+
+  if (savedState) {
+    const state: AudioState = JSON.parse(savedState);
+
+    if (savedTime) {
+      audio.currentTime = parseFloat(savedTime);
+    }
+
+    if (state.isPlaying) {
+      // Use a small delay to ensure audio is loaded
+      setTimeout(async () => {
+        try {
+          await audio.play();
+          statusOff.classList.add("tw-hidden");
+          statusOn.classList.remove("tw-hidden");
+        } catch (error) {
+          console.log("Audio autoplay prevented:", error);
+          // If autoplay fails, update UI to show paused state
+          updateAudioUI();
+        }
+      }, 100);
+    }
+  } else {
+    // Set default volume if no saved state
+    audio.volume = 0.5;
+  }
+}
+
+// Update UI based on audio state
+function updateAudioUI() {
+  if (audio.paused) {
+    statusOff.classList.remove("tw-hidden");
+    statusOn.classList.add("tw-hidden");
+  } else {
+    statusOff.classList.add("tw-hidden");
+    statusOn.classList.remove("tw-hidden");
+  }
+}
+
+// Initialize audio state on page load
+document.addEventListener("DOMContentLoaded", () => {
+  // Ensure all required elements exist
+  if (!audio || !icon || !statusOff || !statusOn) {
+    console.warn("Some audio control elements are missing");
+    return;
+  }
+
+  // Check if audio element exists and is ready
+  if (audio.readyState >= 2) {
+    restoreAudioState();
+    updateAudioUI();
+  } else {
+    // Wait for audio to be ready
+    audio.addEventListener(
+      "canplay",
+      () => {
+        restoreAudioState();
+        updateAudioUI();
+      },
+      { once: true },
+    );
+
+    // Fallback if audio fails to load
+    audio.addEventListener(
+      "error",
+      () => {
+        console.warn("Audio file could not be loaded");
+        updateAudioUI();
+      },
+      { once: true },
+    );
+  }
+});
+
+// Save state periodically and on page unload
+setInterval(() => {
+  if (audio && !audio.error) {
+    saveAudioState();
+  }
+}, 1000); // Save every second
+
+window.addEventListener("beforeunload", () => {
+  if (audio && !audio.error) {
+    saveAudioState();
+  }
+});
+window.addEventListener("pagehide", () => {
+  if (audio && !audio.error) {
+    saveAudioState();
+  }
+});
+
 icon.addEventListener("click", async () => {
   if (audio.paused) {
     await audio.play();
@@ -141,4 +254,28 @@ icon.addEventListener("click", async () => {
     statusOff.classList.remove("tw-hidden");
     statusOn.classList.add("tw-hidden");
   }
+  saveAudioState(); // Save immediately when toggled
+});
+
+// Audio event listeners for better state management
+audio.addEventListener("play", () => {
+  updateAudioUI();
+  saveAudioState();
+});
+
+audio.addEventListener("pause", () => {
+  updateAudioUI();
+  saveAudioState();
+});
+
+audio.addEventListener("ended", () => {
+  // If audio ends, restart it (since it's looped)
+  audio.currentTime = 0;
+  audio.play().catch(console.error);
+});
+
+audio.addEventListener("error", (e) => {
+  console.error("Audio error:", e);
+  // Reset to paused state on error
+  updateAudioUI();
 });

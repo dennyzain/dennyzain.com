@@ -8,10 +8,10 @@ const { posts } = Astro.props;
   id="blog"
   class="tw-min-h-fit tw-grid tw-grid-cols-1 tw-grid-rows-[50px_.5fr_.2fr] tw-mt-4 tw-gap-2 lg:tw-mt-14 lg:tw-gap-5 lg:tw-grid-rows-[.2fr_auto_.2fr]"
 >
-  <h1 class="tw-font-monumentBold tw-self-center tw-text-[32px] tw-row-start-1 lg:tw-text-[35px]">
+  <h1 class="tw-font-monumentBold tw-self-center tw-text-[32px] tw-row-start-1 lg:tw-text-[30px]">
     Latest blogs
   </h1>
-  <div class="tw-row-start-2 lg:tw-space-y-5">
+  <div class="tw-row-start-2 lg:tw-space-y-5 lg:tw-text-[16px]">
     {
       posts.slice(0, 3).map((post: any) => (
         <a class="tw-inline-block" href={`/blog/${post.slug}/`}>
@@ -24,5 +24,6 @@ const { posts } = Astro.props;
     link={{ url: "/blog", name: "see more blogs" }}
     ariaLabel="detail more blogs"
     classWrapper="tw-row-start-3"
+    classText="lg:tw-text-[16px]"
   />
 </section>
