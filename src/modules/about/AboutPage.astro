@@ -6,21 +6,25 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import DockerIcon from "@/assets/icons/docker.svg";
 import PosgresIcon from "@/assets/icons/postgresql.svg";
 import ReactIcon from "@/assets/icons/reactjs.svg";
-import NestIcon from "@/assets/icons/nestjs.svg";
+import PythonIcon from "@/assets/icons/python.svg";
 import JestIcon from "@/assets/icons/jest.svg";
 import TailwindIcon from "@/assets/icons/tailwind.svg";
 import TypescriptIcon from "@/assets/icons/typescript.svg";
 import PrismaIcon from "@/assets/icons/prisma.svg";
 import NextIcon from "@/assets/icons/nextjs.svg";
-import picOfAuthor from "@/assets/images/denny-tampan.jpg";
+import LinuxIcon from "@/assets/icons/linux.svg";
+import AwsIcon from "@/assets/icons/aws.svg";
+import picOfAuthor from "@/assets/images/sitampan1.jpg";
 import myDesk from "@/assets/images/my-desk.jpg";
 
 const techStack = [
   { name: "Docker", icon: DockerIcon, url: "https://www.docker.com/" },
   { name: "Postgres", icon: PosgresIcon, url: "https://www.postgresql.org/" },
   { name: "React", icon: ReactIcon, url: "https://reactjs.org/" },
-  { name: "NestJS", icon: NestIcon, url: "https://nestjs.com/" },
+  { name: "Python", icon: PythonIcon, url: "https://www.python.org/" },
   { name: "Jest", icon: JestIcon, url: "https://jestjs.io/" },
+  { name: "AWS", icon: AwsIcon, url: "https://aws.amazon.com/" },
+  { name: "Linux", icon: LinuxIcon, url: "https://www.linux.org/" },
   { name: "Tailwind", icon: TailwindIcon, url: "https://tailwindcss.com/" },
   { name: "Typescript", icon: TypescriptIcon, url: "https://www.typescriptlang.org/" },
   { name: "Prisma", icon: PrismaIcon, url: "https://www.prisma.io/" },
@@ -29,21 +33,48 @@ const techStack = [
 ---
 
 <BaseLayout title={`About | ${SITE_TITLE}`}>
-  <main class="tw-mt-16 tw-prose tw-prose-favorite">
-    <section class="tw-mb-5 tw-not-prose">
-      <SplitText
-        title="Denny Abbas Zain"
-        letterClass="tw-font-monumentBold tw-text-[22px] lg:tw-text-[35px] lg:tw-py-1"
-        containerClass="tw-justify-center md:tw-mb-6"
-      />
-      <div class="tw-grid tw-grid-cols-1 tw-gap-1 lg:tw-grid-cols-[1fr_1fr] lg:tw-gap-5">
-        <Image
-          src={picOfAuthor}
-          alt="Denny Abbas Zain"
-          class="tw-h-[200px] tw-w-[200px] tw-my-4 tw-object-cover tw-object-top tw-rounded-full tw-mx-auto md:tw-h-[300px] md:tw-w-[300px] md:tw-col-start-2 md:tw-rounded-lg md:tw-my-0"
-        />
-        <div
-          class="tw-start-2 tw-text-[16px] md:tw-col-start-1 md:tw-row-start-1 lg:tw-text-[18px]"
+  <main>
+    <section class="tw-mb-5 tw-pt-36 tw-not-prose">
+      <div class="tw-grid tw-grid-cols-1 tw-gap-4">
+        <div class="tw-col-span-2 tw-justify-self-center tw-flex tw-flex-col tw-items-center">
+          <Image
+            src={picOfAuthor}
+            alt="Denny Abbas Zain"
+            class="tw-rounded-full tw-object-cover tw-object-center tw-w-[200px] tw-h-[300px]"
+          />
+          <p class="tw-text-[12px] tw-pt-5 lg:tw-text-[14px] tw-text-center">
+            Software Developer | Lifelong Learner | Linux Enthusiast
+          </p>
+        </div>
+        <div class="tw-mt-5">
+          <SplitText
+            title="About"
+            letterClass="tw-place-self-end tw-font-monumentBold tw-text-[22px] lg:tw-text-[35px] lg:tw-py-1"
+          />
+          <div class="tw-prose tw-prose-favorite tw-text-[13px] lg:tw-text-[16px]">
+            I'm a software developer who loves building things and learning new technologies. My
+            journey started with curiosity about how computers work, and it's evolved into a passion
+            for creating software that makes a difference. <br />
+            <p class="tw-pt-5">
+              Currently, I work as a frontend developer while exploring the exciting world of Web3,
+              blockchain, and mathematics. I believe in continuous learning and sharing knowledge
+              with the community.
+            </p>
+            <p class="tw-pt-5">
+              When I'm not coding, you'll find me writing blog posts, reading books, or playing
+              games. I'm always excited to collaborate on interesting projects and meet fellow
+              developers.
+            </p>
+          </div>
+        </div>
+
+        <!-- <div
+          class="
+          tw-start-2
+          tw-text-[16px]
+          md:tw-col-start-1
+          md:tw-row-start-1
+          lg:tw-text-[18px]"
         >
           <span class="tw-font-medium">SWE | Lifelong Learner | Linux Enthusiasts</span>
           <ul>
@@ -53,14 +84,14 @@ const techStack = [
             <li>✦ writing blogs sometimes</li>
             <li>✦ i love to play games and read books</li>
           </ul>
-        </div>
+        </Image> -->
       </div>
     </section>
     <section class="tw-not-prose">
       <h1 class="tw-font-monumentBold tw-text-[20px] lg:tw-text-[25px] tw-self-center">
         Favorite Tech Stack
       </h1>
-      <div class="tw-flex tw-col tw-flex-wrap tw-my-5">
+      <div class="tw-grid tw tw-grid-rows-2 tw-gap-4 tw-my-5 tw-grid-flow-col-dense">
         {
           techStack.map(({ name, icon, url }) => (
             <a href={url} target="_blank" rel="noopener noreferrer">
@@ -77,24 +108,26 @@ const techStack = [
         alt="uses"
         class="tw-w-[100%] tw-h-[300px] tw-object-cover tw-rounded-lg tw-object-bottom lg:tw-h-[600px] lg:tw-w-[100%]"
       />
-      <ul class="tw-mt-1 tw-text-[16px] lg:tw-text-[18px]">
-        <li>Macbook Pro M2 13" (8GB 512GB)</li>
-        <li>
-          PC
-          <ul>
-            <li>Processor Intel I3 10400f</li>
-            <li>RAM 16GB</li>
-            <li>GPU ASUS ROG RTX 4060 8GB</li>
-            <li>Storage 512GB SSD and 3TB HDD</li>
-            <li>OS dualboot ubuntu 22.04 and windows 11(for gaming)</li>
-          </ul>
-        </li>
-        <li>Mouse Fantech Thor II X16</li>
-        <li>Keyboard Fantech K613</li>
-        <li>Monitor LG 32"</li>
-        <li>Headphone Sony WH-1000XM4</li>
-        <li>Gaming Chair Rexus</li>
-      </ul>
+      <div class="tw-prose tw-prose-favorite">
+        <ul class="tw-mt-1 lg:tw-text-[18px]">
+          <li>Macbook Pro M2 13" (8GB 512GB)</li>
+          <li>
+            PC
+            <ul>
+              <li>Processor Intel I3 10400f</li>
+              <li>RAM 16GB</li>
+              <li>GPU ASUS ROG RTX 4060 8GB</li>
+              <li>Storage 512GB SSD and 3TB HDD</li>
+              <li>OS dualboot ubuntu 22.04 and windows 11(for gaming)</li>
+            </ul>
+          </li>
+          <li>Mouse Fantech Thor II X16</li>
+          <li>Keyboard Fantech K613</li>
+          <li>Monitor LG 32"</li>
+          <li>Headphone Sony WH-1000XM4</li>
+          <li>Gaming Chair Rexus</li>
+        </ul>
+      </div>
     </section>
   </main>
 </BaseLayout>
