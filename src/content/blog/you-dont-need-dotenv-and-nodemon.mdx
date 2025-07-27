@@ -1,0 +1,40 @@
+---
+title: "You don't need dotenv and nodemon"
+description: "You don't need dotenv and nodemon when developing nodejs app"
+pubDate: "2025-07-27"
+minRead: 6
+heroImage: "/banner/dotenv-nodemon"
+tags: ["nodejs", "tips"]
+authorOfBanner: "Shubham Dhage"
+---
+
+When you have projects backend that using nodejs, you typically need dotenv for storing your environment variables and nodemon to watching your file changes without rerun your app. But i have good news for us to developing without those tools again.
+
+Starting with updated Nodejs v20.6, it doesnt require to using dotenv because in that version we just need run using flag --env-file=$YOURENVFILE.
+
+Example:
+
+```js
+node --env-file=.env index.js
+```
+
+Also, when during developing nodejs app, we use nodemon to automatically rerun the changes files so we dont need back and forth the terminal now we dont need that anymore, Nodejs v22 launch --watch feature is stable in that version.
+
+```js
+node --watch index.js
+```
+
+So we can run them in one line
+
+```js
+node --watch --env-file=.env index.js
+```
+
+that's all, you dont need dotenv and nodemon anymore. Happy coding!
+
+#### Sources
+
+- [Nodejs v20.6](https://nodejs.org/en/blog/release/v20.6.0)
+- [Nodejs v22](https://nodejs.org/en/blog/announcements/v22-release-announce)
+
+> It's not about being the best, it's about being better than you were yesterday.
