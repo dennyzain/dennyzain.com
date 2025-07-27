@@ -6,22 +6,26 @@
   h1 {
     @apply tw-text-2xl;
   }
+
   h2 {
     @apply tw-text-xl;
   }
+
   h3 {
     @apply tw-text-lg;
   }
+
   h4 {
     @apply tw-text-base;
   }
+
   h5 {
     @apply tw-text-sm tw-font-semibold;
   }
 }
 
 html {
-  @apply tw-font-normal tw-font-geist;
+  @apply tw-font-normal tw-font-overusedGrotesk;
 }
 
 html,
@@ -78,6 +82,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .link:visited {
   background-size: 0 0.2em;
 }
+
 .link:hover,
 .link:focus {
   background-size: 100% 0.2em;
@@ -95,6 +100,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .link-header:visited {
   background-size: 0 0.2em;
 }
+
 .link-header:hover,
 .link-header:focus {
   background-size: 100% 0.2em;

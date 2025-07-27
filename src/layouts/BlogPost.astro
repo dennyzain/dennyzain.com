@@ -8,14 +8,25 @@ import ImageCloud from "@/components/ImageCloud.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, heroImage, tags, minRead, authorOfBanner } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  heroImage,
+  tags,
+  minRead,
+  authorOfBanner,
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <main class="tw-mt-14 lg:tw-mt-20">
     <article class="tw-mb-2">
-      <h1 class="tw-font-monument tw-text-2xl">
-        <SplitText title={title} letterClass="lg:tw-text-[45px] lg:tw-py-3 lg:tw-ml-2" />
+      <h1 class="tw-font-calendasPlus tw-text-2xl">
+        <SplitText
+          title={title}
+          letterClass="lg:tw-text-[45px] lg:tw-py-3 lg:tw-ml-2"
+        />
       </h1>
       <div class="tw-flex tw-items-center tw-space-x-2 tw-my-2">
         <FormattedDate date={pubDate} />

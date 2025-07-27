@@ -26,7 +26,11 @@ const techStack = [
   { name: "AWS", icon: AwsIcon, url: "https://aws.amazon.com/" },
   { name: "Linux", icon: LinuxIcon, url: "https://www.linux.org/" },
   { name: "Tailwind", icon: TailwindIcon, url: "https://tailwindcss.com/" },
-  { name: "Typescript", icon: TypescriptIcon, url: "https://www.typescriptlang.org/" },
+  {
+    name: "Typescript",
+    icon: TypescriptIcon,
+    url: "https://www.typescriptlang.org/",
+  },
   { name: "Prisma", icon: PrismaIcon, url: "https://www.prisma.io/" },
   { name: "NextJS", icon: NextIcon, url: "https://nextjs.org/" },
 ];
@@ -36,34 +40,42 @@ const techStack = [
   <main>
     <section class="tw-mb-5 tw-pt-36 tw-not-prose">
       <div class="tw-grid tw-grid-cols-1 tw-gap-4">
-        <div class="tw-col-span-2 tw-justify-self-center tw-flex tw-flex-col tw-items-center">
+        <div
+          class="tw-col-span-2 tw-justify-self-center tw-flex tw-flex-col tw-items-center"
+        >
           <Image
             src={picOfAuthor}
             alt="Denny Abbas Zain"
             class="tw-rounded-full tw-object-cover tw-object-center tw-w-[200px] tw-h-[300px]"
           />
-          <p class="tw-text-[12px] tw-pt-5 lg:tw-text-[14px] tw-text-center">
+          <p class="tw-text-[13px] tw-pt-5 lg:tw-text-[15px] tw-text-center">
             Software Developer | Lifelong Learner | Linux Enthusiast
           </p>
         </div>
         <div class="tw-mt-5">
           <SplitText
             title="About"
-            letterClass="tw-place-self-end tw-font-monumentBold tw-text-[22px] lg:tw-text-[35px] lg:tw-py-1"
+            letterClass="tw-place-self-end tw-font-calendasPlus tw-text-[22px] lg:tw-text-[30px] lg:tw-py-1"
           />
-          <div class="tw-prose tw-prose-favorite tw-text-[13px] lg:tw-text-[16px]">
-            I'm a software developer who loves building things and learning new technologies. My
-            journey started with curiosity about how computers work, and it's evolved into a passion
-            for creating software that makes a difference. <br />
-            <p class="tw-pt-5">
-              Currently, I work as a frontend developer while exploring the exciting world of Web3,
-              blockchain, business, and mathematics. I believe in continuous learning in order to
-              improve myself and the community.
+          <div
+            class="tw-prose tw-prose-favorite tw-text-[13px] lg:tw-text-[16px]"
+          >
+            <p>
+              I'm a software developer who loves building things and learning
+              new technologies. My journey started with curiosity about how
+              computers work, and it's evolved into a passion for creating
+              software that makes a difference.
             </p>
             <p class="tw-pt-5">
-              When I'm not coding, you'll find me writing blog posts, reading books, or playing
-              games. I'm always excited to collaborate on interesting projects and meet fellow
-              developers.
+              Currently, I work as a frontend developer while exploring the
+              exciting world of Web3, blockchain, business, and mathematics. I
+              believe in continuous learning in order to improve myself and the
+              community.
+            </p>
+            <p class="tw-pt-5">
+              When I'm not coding, you'll find me writing blog posts, reading
+              books, or playing games. I'm always excited to collaborate on
+              interesting projects and meet fellow developers.
             </p>
           </div>
         </div>
@@ -88,21 +100,33 @@ const techStack = [
       </div>
     </section>
     <section class="tw-not-prose">
-      <h1 class="tw-font-monumentBold tw-text-[20px] lg:tw-text-[25px] tw-self-center">
+      <h1
+        class="tw-font-calendasPlus tw-text-[22px] lg:tw-text-[30px] tw-self-center"
+      >
         Favorite Tech Stack
       </h1>
-      <div class="tw-grid tw tw-grid-rows-2 tw-gap-4 tw-my-5 tw-grid-flow-col-dense">
+      <div
+        class="tw-grid tw tw-grid-rows-2 tw-gap-4 tw-my-5 tw-grid-flow-col-dense"
+      >
         {
           techStack.map(({ name, icon, url }) => (
             <a href={url} target="_blank" rel="noopener noreferrer">
-              <Image src={icon} alt={name} class="tw-w-[60px] tw-h-auto tw-object-contain" />
+              <Image
+                src={icon}
+                alt={name}
+                class="tw-w-[60px] tw-h-auto tw-object-contain"
+              />
             </a>
           ))
         }
       </div>
     </section>
     <section>
-      <h1 class="tw-font-monumentBold tw-text-[20px] lg:tw-text-[25px] tw-self-center">Uses</h1>
+      <h1
+        class="tw-font-calendasPlus tw-text-[22px] lg:tw-text-[30px] lg:tw-mb-3 tw-self-center"
+      >
+        Uses
+      </h1>
       <Image
         src={myDesk}
         alt="uses"
