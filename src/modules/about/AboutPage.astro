@@ -16,6 +16,7 @@ import LinuxIcon from "@/assets/icons/linux.svg";
 import AwsIcon from "@/assets/icons/aws.svg";
 import picOfAuthor from "@/assets/images/sitampan1.jpg";
 import myDesk from "@/assets/images/my-desk.jpg";
+import ImageCloud from "@/components/ImageCloud.astro";
 
 const techStack = [
   { name: "Docker", icon: DockerIcon, url: "https://www.docker.com/" },
@@ -34,6 +35,11 @@ const techStack = [
   { name: "Prisma", icon: PrismaIcon, url: "https://www.prisma.io/" },
   { name: "NextJS", icon: NextIcon, url: "https://nextjs.org/" },
 ];
+
+const books = [
+  { bookName: "Psychology Of Money", bookImage: "/books/The_Psychology_of_Money_gzjj4n" },
+  { bookName: "Start With Why", bookImage: "/books/Start_with_Why_Cover_phirt2" },
+];
 ---
 
 <BaseLayout title={`About | ${SITE_TITLE}`}>
@@ -49,7 +55,7 @@ const techStack = [
             class="tw-rounded-full tw-object-cover tw-object-center tw-w-[200px] tw-h-[300px]"
           />
           <p class="tw-text-[13px] tw-pt-5 lg:tw-text-[15px] tw-text-center">
-            Software Developer | Lifelong Learner
+            Software Developer | Lifelong Learner | Linux Enthusiasts
           </p>
         </div>
         <div class="tw-mt-5">
@@ -68,7 +74,7 @@ const techStack = [
             </p>
             <p class="tw-pt-5">
               Currently, I work as a frontend developer while exploring the
-              exciting world of Web3, blockchain, business, and mathematics. I
+              exciting world of Web3, blockchain, business, finance, and mathematics. I
               believe in continuous learning in order to improve myself and the
               community.
             </p>
@@ -151,6 +157,28 @@ const techStack = [
         }
       </div>
     </section>
+    <section class="tw-not-prose tw-mt-5">
+      <h1
+        class="tw-font-calendasPlus tw-text-[22px] lg:tw-text-[30px] tw-self-center"
+      >
+Books I've Read
+      </h1>
+      <div
+        class="tw-flex tw-flex-wrap tw-gap-4 tw-my-5"
+      >
+        {
+          books.map(({ bookName, bookImage }) => (
+              <ImageCloud
+              classImg="tw-object-contain tw-h-[150px] tw-w-[100px] tw-shadow-xl"
+              width={100}
+              height={150}
+              publicId={bookImage}
+              alt={bookName}
+            />
+          ))
+        }
+      </div>
+    </section>
     <section>
       <h1
         class="tw-font-calendasPlus tw-text-[22px] lg:tw-text-[30px] lg:tw-mb-3 tw-self-center"
@@ -185,3 +213,4 @@ const techStack = [
     </section>
   </main>
 </BaseLayout>
+
