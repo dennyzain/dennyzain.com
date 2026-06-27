@@ -52,7 +52,16 @@ const { pathname } = Astro.url;
       pathname !== "/" && (
         <a href="/" aria-label="Go to Bio">
           <span class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-inline-block">
-            Bio
+            Home
+          </span>
+        </a>
+      )
+    }
+    {
+      pathname !== "/about" && (
+        <a href="/about" aria-label="Go to About">
+          <span class="link-header tw-font-monument tw-hidden tw-text-white tw-text-xl lg:tw-inline-block">
+            About
           </span>
         </a>
       )
@@ -92,10 +101,11 @@ const { pathname } = Astro.url;
       {
         pathname !== "/" && (
           <HeaderLink class="link-item" href="/">
-            Bio
+            Home
           </HeaderLink>
         )
       }
+      <HeaderLink class="link-item" href="/about">About</HeaderLink>
       <HeaderLink class="link-item" href="/blog">Blog</HeaderLink>
       <HeaderLink class="link-item" href="/project">Projects</HeaderLink>
       <span id="to-contact" class="link-item">Contact</span>
