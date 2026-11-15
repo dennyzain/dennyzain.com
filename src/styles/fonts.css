@@ -23,8 +23,9 @@
 }
 
 @font-face {
-  font-family: "OverusedGrotesk";
-  src: url("/fonts/Overused-Grotesk.woff2") format("woff2");
+  font-family: "CabinetGrotesk";
+  src: url("/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }

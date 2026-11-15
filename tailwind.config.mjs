@@ -10,7 +10,7 @@ export default {
         monument: ["Monument-Extended-Regular", ...fontFamily.sans],
         monumentBold: ["Monument-Extended-Ultrabold", ...fontFamily.sans],
         calendasPlus: ["CalendasPlus", ...fontFamily.sans],
-        overusedGrotesk: ["OverusedGrotesk", ...fontFamily.sans],
+        cabinetGrotesk: ["CabinetGrotesk", ...fontFamily.sans],
       },
       screens: {
         xs: [{ max: "475px" }],
